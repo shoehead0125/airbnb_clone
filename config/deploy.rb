@@ -3,7 +3,7 @@ lock '3.8.0'
 
 set :application, 'airbnb_clone'
 set :repo_url, 'https://github.com/shoehead0125/airbnb_clone.git'
-set :branch, fetch(:branch, 'master')
+set :branch, ENV['BRANCH'] || 'master'
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user
