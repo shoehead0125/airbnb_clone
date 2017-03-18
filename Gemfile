@@ -57,5 +57,6 @@ group :production do
 end
 
 gem 'annotate'
+gem 'devise'
 gem 'erb2haml'
 gem 'haml-rails'
