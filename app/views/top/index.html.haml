@@ -1,7 +1,7 @@
 .container
   %header.header
     = image_tag('airbnb_logo.jpg',:width => '80',:height => '40',:alt => 'airbnb_logo')
-    = link_to 'ホストになる', '', class: 'become-a-host pull-right'
+    %a.pull-right{"data-target" => "#formModal", "data-toggle" => "modal"} アカウント作成
     = link_to 'ホストする時間がない方はこちら', '', class: 'hire-a-host pull-right'
     = link_to '旅行', '', class: 'travel pull-right'
     = link_to 'メッセージ', '', class: 'message pull-right'
@@ -19,6 +19,19 @@
         =text_field_tag :date
         =select_tag 'number_of_people', '<option>1</option><option>2</option>'.html_safe
         =button_tag '探す'
+    #formModal.modal.fade{:tabindex => "-1"}
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            %button.close{"data-dismiss" => "modal", :type => "button"}
+              %span ×
+            %h4.modal-title アカウント登録
+          .modal-body
+            = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+              = render partial: "top/shared/form", locals: {f: f}
+              .actions
+                = f.submit "Create Account", class: 'btn'
+
   %footer.footer
     %img.logo_footer
     .corprate_name &copy;Airbnb,Inc.

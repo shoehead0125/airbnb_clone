@@ -1,0 +1,30 @@
+.form-group
+  .field-label
+    = f.label :first_name
+  .field-input
+    = f.text_field :first_name, autofocus: true, class: 'form-control'
+.form-group
+  .field-label
+    = f.label :last_name
+  .field-input
+    = f.text_field :last_name, autofocus: true, class: 'form-control'
+.form-group
+  .field-label
+    = f.label :email
+  .field-input
+    = f.email_field :email, class: 'form-control'
+.form-group
+  .field-label
+    = f.label :password
+  .field-input
+    = f.password_field :password, autocomplete: "off", class: 'form-control'
+.form-group
+  .field-label
+    = f.label :password_confirmation
+  .field-input
+    = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+.form-group
+  .field-label
+    = f.label :birthday
+  .field-input
+    = f.date_select :birthday, start_year: 1930, end_year: (Time.now.year - 18), class: 'form-control'
