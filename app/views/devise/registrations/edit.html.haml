@@ -1,0 +1,49 @@
+%main.edit-main
+  %h3 必須項目
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |f|
+    = devise_error_messages!
+    .edit-main__field.row
+      .edit-main__field-left.col-xs-3
+        = f.label :first_name, '名', class: 'pull-right'
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.text_field :first_name, autofocus: true
+    .edit-main__field.row
+      .edit-main__field-left.col-xs-3
+        = f.label :last_name, '姓', class: 'pull-right'
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.text_field :last_name, autofocus: true
+    .edit-main__field.row
+      .edit-main__field-left.col-xs-3
+        = f.label :birthday, '生年月日', class: 'pull-right'
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.date_select :birthday, start_year: 1930, end_year: (Time.now.year - 18)
+    .edit-main__field.row
+      .edit-main__field-left.col-xs-3
+        = f.label :email, 'メールアドレス', class: 'pull-right'
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.email_field :email, autofocus: true
+    .edit-main__field.row
+      .edit__field-left.col-xs-3
+        = f.label :password, 'パスワード', class: 'pull-right'
+        %p 変更しない場合は空欄のままにしておいてください。
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.password_field :password, autocomplete: "off", placeholder: "#{@minimum_password_length}characters minimum"
+    .edit-main__field.row
+      .edit-main__field-left.col-xs-3
+        = f.label :password_confirmation, class: 'pull-right'
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.password_field :password_confirmation, autocomplete: "off"
+    .edit-main__field.row
+      .edit-main__field-left.col-xs-3
+        = f.label :current_password, class: 'pull-right'
+        %i (we need your current password to confirm your changes)
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.password_field :current_password, autocomplete: "off"
+    .edit-main__field.row
+      .edit-main__field-left.col-xs-3
+        = f.label :introduce, '自己紹介', class: 'pull-right'
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.text_field :introduce
+    .actions.row
+      .col-xs-offset-4
+        = f.submit "Update", class: 'submit'
