@@ -1,0 +1,7 @@
+%ul.dropdown-menu{:role => "menu"}
+  %li{:role => "presentation"}
+    %a{:href => "#"} プロフィールを編集
+  %li{:role => "presentation"}
+    %a{:href => "#"} アカウントの設定
+  %li{:role => "presentation"}
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
