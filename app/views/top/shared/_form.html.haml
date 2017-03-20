@@ -1,0 +1,41 @@
+#formModal.modal.fade{:tabindex => "-1"}
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span ×
+        %h4.modal-title アカウント登録
+      .modal-body
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .form-group
+            .field-label
+              = f.label :first_name
+            .field-input
+              = f.text_field :first_name, autofocus: true, class: 'form-control'
+          .form-group
+            .field-label
+              = f.label :last_name
+            .field-input
+              = f.text_field :last_name, autofocus: true, class: 'form-control'
+          .form-group
+            .field-label
+              = f.label :email
+            .field-input
+              = f.email_field :email, class: 'form-control'
+          .form-group
+            .field-label
+              = f.label :password
+            .field-input
+              = f.password_field :password, autocomplete: "off", class: 'form-control'
+          .form-group
+            .field-label
+              = f.label :password_confirmation
+            .field-input
+              = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+          .form-group
+            .field-label
+              = f.label :birthday
+            .field-input
+              = f.date_select :birthday, start_year: 1930, end_year: (Time.now.year - 18), class: 'form-control'
+          .actions
+            = f.submit "Create Account", class: 'btn'

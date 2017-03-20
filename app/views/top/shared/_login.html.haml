@@ -1,0 +1,24 @@
+#loginModal.modal.fade{:tabindex => "-1"}
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span ×
+        %h4.modal-title ログインメニュー
+      .modal-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            .field-label
+              = f.label :email
+            .field-input
+              = f.email_field :email, autofocus: true, class: 'form-control'
+            .field-label
+              = f.label :password
+            .field-input
+              = f.password_field :password, autocomplete: "off", class: 'form-control'
+            - if devise_mapping.rememberable?
+              .field
+                = f.label :remember_me, 'ログイン情報を記憶する'
+                = f.check_box :remember_me
+            .actions
+              = f.submit "Log in", class: 'btn'

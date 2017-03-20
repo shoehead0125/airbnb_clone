@@ -1,24 +1,15 @@
-.container
-  %header.header
-    = image_tag('airbnb_logo.jpg',:width => '80',:height => '40',:alt => 'airbnb_logo')
-    = link_to 'ホストになる', '', class: 'become-a-host pull-right'
-    = link_to 'ホストする時間がない方はこちら', '', class: 'hire-a-host pull-right'
-    = link_to '旅行', '', class: 'travel pull-right'
-    = link_to 'メッセージ', '', class: 'message pull-right'
-    = link_to 'ヘルプ', '', class: 'help pull-right'
-    = link_to '画像に差し替え', '', class: 'user pull-right'
-  %main.main
-    %h1
-      %span#airbnb Airbnb
-      世界にひとつの家を予</br>
-      約。まるでローカルな街体</br>
-      験。
-    = form_tag(controller: :tops, action: :new) do
-      .search_field
-        =text_field_tag :location
-        =text_field_tag :date
-        =select_tag 'number_of_people', '<option>1</option><option>2</option>'.html_safe
-        =button_tag '探す'
-  %footer.footer
-    %img.logo_footer
-    .corprate_name &copy;Airbnb,Inc.
+%main.main
+  %h1
+    %span#airbnb Airbnb
+    世界にひとつの家を予</br>
+    約。まるでローカルな街体</br>
+    験。
+  = form_tag(controller: :tops, action: :new) do
+    .search_field
+      =text_field_tag :location
+      =text_field_tag :date
+      =select_tag 'number_of_people', '<option>1</option><option>2</option>'.html_safe
+      =button_tag '探す'
+%footer.footer
+  %img.logo_footer
+  .corprate_name &copy;Airbnb,Inc.
