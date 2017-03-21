@@ -1,0 +1,32 @@
+%main#site-content{ role: 'main',tabindex: '-1' }
+  .page-container
+    .row
+      .col-lg-3.col-md-4.hide-sm
+        #user.space-4
+          %img.img-responsive{:alt => "#{@user.last_name}", :height => "240", :src => "https://a0.muscache.com/defaults/user_pic-225x225.png?v=2", :title => "#{@user.last_name}", :width => "240"}/
+        .panel.panel-default.panel-show
+          .panel-heading 認証済み
+          .panel-body
+            %ul.list-unstyled.space-3
+              %li.row.row-table.space-2
+                .col-xs-8.col-middle
+                  メールアドレス
+                .col-xs-2.col-middle
+                  =fa_icon('check')
+              %li.row.row-table.space-2
+                .col-xs-8.col-middle
+                  電話番号
+                .col-xs-2.col-middle
+                  =fa_icon('check')
+            %a{:href => "https://www.airbnb.jp/users/edit_verification"} 追加情報を認証
+      .col-lg-9.col-md-8.col-sm-12
+        .row.space-4.user_show
+          .col-md-12.col-lg-12
+            %h1 こんにちわ、#{@user.first_name}です。
+        .h5.space-top-2
+          %h3 JP・2017年からメンバー
+        .h5.space-top-2.report
+          =fa_icon('flag')
+          %h4 このユーザーを報告
+        .h5.space-top-2
+          =link_to 'プロフィールの編集', edit_user_registration_path(@user.id)

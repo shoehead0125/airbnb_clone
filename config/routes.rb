@@ -18,10 +18,12 @@
 #                          POST   /users(.:format)               devise/registrations#create
 #                     root GET    /                              top#index
 #                  new_top GET    /top/new(.:format)             tops#new
+#                     user GET    /users/:id(.:format)           users#show
 #
 
 Rails.application.routes.draw do
   devise_for :users
   root 'top#index'
   resource :top, only: [:index, :new]
+  resources :users, only: [:show]
 end
