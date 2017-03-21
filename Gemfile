@@ -57,8 +57,9 @@ group :production do
 end
 
 gem 'annotate'
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
 gem 'devise'
 gem 'erb2haml'
+gem 'font-awesome-rails'
 gem 'haml-rails'
-gem 'bootstrap-sass'
-gem 'autoprefixer-rails'
