@@ -59,6 +59,7 @@ end
 gem 'annotate'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
+gem 'carrierwave'
 gem 'devise'
 gem 'erb2haml'
 gem 'font-awesome-rails'
