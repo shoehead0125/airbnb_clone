@@ -1,0 +1,12 @@
+%main#site-content
+  .row
+    .col-md-7
+      .site-content__left
+        .space-5
+          %h1.become-a-host さあ、#{current_user.first_name}さん！ホストになりましょう！
+        .site-content__left__form
+          %h3 お部屋の情報を入力しましょう！
+          = render partial: 'rooms/shared/form', locals: { room: @room }
+    .col-md-5
+      =image_tag 'vase.gif'
+

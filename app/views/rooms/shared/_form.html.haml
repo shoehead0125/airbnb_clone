@@ -1,0 +1,18 @@
+= form_for(room) do |f|
+  .form-group
+    .field-label
+      = f.label :type
+    .field-input
+      = f.select :category, Room.categories.keys.to_a, autofocus: true, class: 'form-control'
+  .form-group
+    .field-label
+      = f.label :max_number
+    .field-input
+      = f.select :max_number, options_for_select(Array(1..16)), autofocus: true, class: 'form-control'
+  .form-group
+    .field-label
+      = f.label :adress
+    .field-input
+      = f.text_field :adress, class: 'form-control'
+  .actions
+    = f.submit "Save room", class: 'btn'
