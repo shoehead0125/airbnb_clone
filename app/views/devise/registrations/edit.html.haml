@@ -44,6 +44,11 @@
         = f.label :introduce, '自己紹介', class: 'pull-right'
       .edit-main__field-right.col-xs-6.col-xs-offset-1
         = f.text_field :introduce
+    .edit-main__field.row
+      .edit-main__field-left.col-xs-3
+        = f.label :image, '写真', class: 'pull-right'
+      .edit-main__field-right.col-xs-6.col-xs-offset-1
+        = f.file_field :image
     .actions.row
       .col-xs-offset-4
         = f.submit "Update", class: 'submit'

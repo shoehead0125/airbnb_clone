@@ -16,6 +16,12 @@
   }
 }
 
+.usermenu{
+  a{
+      padding-top: 0;
+  }
+}
+
 .main{
   height: calc(100% - 96px);
   h1{
@@ -41,3 +47,11 @@
     text-align: center;
   }
 }
+
+.self-image{
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+

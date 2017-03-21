@@ -3,7 +3,10 @@
     .row
       .col-lg-3.col-md-4.hide-sm
         #user.space-4
-          %img.img-responsive{:alt => "#{@user.last_name}", :height => "240", :src => "https://a0.muscache.com/defaults/user_pic-225x225.png?v=2", :title => "#{@user.last_name}", :width => "240"}/
+          -if @user.image
+            =image_tag @user.image, height: 240, width: 240
+          - else
+            %img.img-responsive{:alt => "#{@user.last_name}", :height => "240", :src => "https://a0.muscache.com/defaults/user_pic-225x225.png?v=2", :title => "#{@user.last_name}", :width => "240"}
         .panel.panel-default.panel-show
           .panel-heading 認証済み
           .panel-body
