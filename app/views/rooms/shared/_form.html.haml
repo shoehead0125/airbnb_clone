@@ -14,5 +14,16 @@
       = f.label :adress
     .field-input
       = f.text_field :adress, class: 'form-control'
+  - unless room.new_record?
+    .form-group
+    .field-label
+      = f.label :name
+    .field-input
+      = f.text_field :name, class: 'form-control'
+    .form-group
+    .field-label
+      = f.label :image
+    .field-input
+      = f.file_field :image
   .actions
     = f.submit "Save room", class: 'btn'

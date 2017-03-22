@@ -1,4 +1,9 @@
 class RoomsController < ApplicationController
+  before_action :set_room_edit, only: [:edit, :update]
+  def index
+    @rooms = current_user.rooms
+  end
+
   def new
     @room = Room.new
   end
@@ -16,9 +21,23 @@ class RoomsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @room.update(room_params)
+      redirect_to rooms_path(current_user.id)
+    else
+      render action: :edit
+    end
+  end
+
   private
 
+  def set_room_edit
+    @room = Room.find(params[:id])
+  end
+
   def room_params
-    params.require(:room).permit(:category, :max_number, :adress)
+    params.require(:room).permit(:category, :max_number, :adress, :name, :image)
   end
 end

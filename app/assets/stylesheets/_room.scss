@@ -9,3 +9,99 @@
 .space-5{
   margin-bottom: 30px;
 }
+
+.space-top-1{
+  margin-top: 6px;
+}
+
+.space-top-2{
+  margin-top: 12px;
+}
+
+.space-top-4{
+  margin-top: 24px;
+}
+
+.site-content{
+  .subnav{
+    position: relative;
+    background-color: #484848;
+  }
+}
+
+.btn-host{
+  border-color: #007a87;
+  background-color: #007a87;
+  color: #fff;
+}
+
+.page-container-responsive{
+  width: 1080px;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subnav-list{
+  margin-left: -14px;
+  margin-right: -14px;
+  height: 40px;
+  .list-item{
+    margin-top: 10px;
+    .subnav-item{
+      color: #ddd;
+      padding: 10px 14px;
+    }
+  }
+}
+
+.sidenav-list{
+  list-style: none;
+  padding-left: 2px;
+    .sidenav-item{
+      font-size: 16px;
+      padding: 6px 0;
+    }
+}
+
+.media-cover{
+  border-style: solid;
+}
+
+.panel{
+  border-color: #c4c4c4;
+  .panel-header{
+    font-size: 16px;
+    padding: 7px 20px 7px;
+    background-color: #edefed;
+    .active-panel-padding{
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+  }
+}
+
+.progress-bar__lean{
+  height: 5px;
+  .progress-bar__babu{
+    background-color: #00a699;
+  }
+}
+
+.text-babu{
+  color: #00a699;
+}
+
+.col-middle{
+  vertical-align: middle;
+}
+
+.btn__first-btn{
+  border-color: #ff5a5f;
+  background-color: #ff5a5f;
+}
+
+.btn__second-btn{
+  border-color: #c4c4c4;
+}
