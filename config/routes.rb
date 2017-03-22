@@ -19,6 +19,11 @@
 #                     root GET    /                              top#index
 #                  new_top GET    /top/new(.:format)             tops#new
 #                     user GET    /users/:id(.:format)           users#show
+#                    rooms POST   /rooms(.:format)               rooms#create
+#                 new_room GET    /rooms/new(.:format)           rooms#new
+#                edit_room GET    /rooms/:id/edit(.:format)      rooms#edit
+#                     room PATCH  /rooms/:id(.:format)           rooms#update
+#                          PUT    /rooms/:id(.:format)           rooms#update
 #
 
 Rails.application.routes.draw do
@@ -26,5 +31,5 @@ Rails.application.routes.draw do
   root 'top#index'
   resource :top, only: [:index, :new]
   resources :users, only: [:show]
-  resources :rooms, only: [:new, :create]
+  resources :rooms, except: [:destroy, :show]
 end
