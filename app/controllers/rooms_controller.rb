@@ -7,6 +7,8 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     if @room.save
       redirect_to root_path
+      current_user.status = 'host'
+      current_user.save
       # TODO
       # 作り込みの際には部屋のedit_pathへ飛ぶ
     else
