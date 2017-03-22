@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.new(room_params)
     if @room.save
       redirect_to root_path
       current_user.status = 'host'
@@ -17,6 +17,7 @@ class RoomsController < ApplicationController
   end
 
   private
+
   def room_params
     params.require(:room).permit(:category, :max_number, :adress)
   end
