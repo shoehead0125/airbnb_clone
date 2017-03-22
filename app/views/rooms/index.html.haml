@@ -1,0 +1,19 @@
+%main.site-content
+  = render partial: 'rooms/shared/subnav'
+  .page-container-responsive.space-top-4.space-4
+    .row
+      .col-md-3.space-sm-3
+        %ul.sidenav-list
+          %li.sidenav-item
+            %a リスティング
+          %li.sidenav-item
+            %a 予約
+          %li.sidenav-item
+            %a 予約の要件
+          .space-top-4.space-4
+            =link_to 'リスティングを新規追加', new_room_path, class: 'btn btn-host'
+      .col-md-9
+        .listings-container
+          = render partial: 'rooms/shared/room', collection: @rooms
+
+

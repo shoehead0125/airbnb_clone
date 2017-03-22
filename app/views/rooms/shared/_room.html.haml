@@ -1,0 +1,27 @@
+.panel.space-4
+  .panel-header.active-panel-header
+    .active-panel-padding #{ room.name }
+  %ul.list-unstyled.list-layout
+    %li.listing.panel-body
+      .row.row-table
+        .col-middle.space-sm-2.space-top-sm-4.col-md-5.listing-photo
+          .media-cover.text-center
+            - if room.image
+              =link_to image_tag(room.image, height: 185)
+            - else
+              =link_to image_tag('camera.jpeg', height: 185)
+        .col-sm-10.col-lg-7.col-middle
+          .row.row-table
+            .col-lg-10
+              .listing-progress
+                .progress.progress-bar__lean{"aria-valuemax" => "7", "aria-valuemin" => "0", "aria-valuenow" => "5", :role => "progressbar"}
+                  .progress-bar.progress-bar-success.progress-bar__babu{:style => "width: 71%;"}
+                .text-babu.space-top-1
+                  %span リスティングは作成は100%
+                .space-top-2
+                  %span.h4 #{ room.name }
+                .text-muted.text-grey.space-top-1.last-modified-date
+                  %span #{ room.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') }
+                .space-top-4
+                  =link_to 'リスティングの作成', edit_room_path(current_user.id), class: 'btn btn__first-btn btn-primary'
+                  =link_to 'プレビュー', '', class: 'btn btn__second-btn'
