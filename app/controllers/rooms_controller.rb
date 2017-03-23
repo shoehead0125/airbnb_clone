@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room_edit, only: [:edit, :update]
+  before_action :set_room_edit, only: [:edit, :update, :destroy]
   def index
     @rooms = current_user.rooms
   end
@@ -11,11 +11,9 @@ class RoomsController < ApplicationController
   def create
     @room = current_user.rooms.new(room_params)
     if @room.save
-      redirect_to root_path
       current_user.status = 'host'
       current_user.save
-      # TODO
-      # 作り込みの際には部屋のedit_pathへ飛ぶ
+      redirect_to rooms_path
     else
       render action: :new
     end
@@ -24,10 +22,19 @@ class RoomsController < ApplicationController
   def edit; end
 
   def update
+    redirect_to edit_room_path(@room.id) unless current_user.id == @room.user_id
     if @room.update(room_params)
       redirect_to rooms_path(current_user.id)
     else
       render action: :edit
+    end
+  end
+
+  def destroy
+    if @room.destroy
+      redirect_to rooms_path
+    else
+      render action: :index
     end
   end
 

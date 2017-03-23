@@ -22,6 +22,34 @@
   margin-top: 24px;
 }
 
+.space-top-5{
+  margin-top: 30px;
+}
+
+.h5{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+.delete-message{
+  font-size: 14px;
+  font-weight: 100;
+}
+
+.alert-block{
+  height: 241px;
+  width: 100%;
+  z-index:1;
+  background-color: #c2e4e7;
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  padding: 25px 25px 25px 110px;
+}
+
 .site-content{
   .subnav{
     position: relative;
@@ -104,4 +132,21 @@
 
 .btn__second-btn{
   border-color: #c4c4c4;
+}
+
+.btn__back-btn{
+  border-color: #c4c4c4;
+}
+
+.add_delete{
+  position: relative;
+}
+
+.delete_mark{
+  font-size: 20px;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  height: 30px;
+  display: none;
 }

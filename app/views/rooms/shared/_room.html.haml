@@ -1,4 +1,5 @@
-.panel.space-4
+.panel.space-4.add_delete{ id: room.id }
+  .delete_mark{ id: "delete-#{ room.id }"} ☓
   .panel-header.active-panel-header
     .active-panel-padding #{ room.name }
   %ul.list-unstyled.list-layout
@@ -23,5 +24,19 @@
                 .text-muted.text-grey.space-top-1.last-modified-date
                   %span #{ room.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') }
                 .space-top-4
-                  =link_to 'リスティングの作成', edit_room_path(current_user.id), class: 'btn btn__first-btn btn-primary'
+                  =link_to 'リスティングの作成', edit_room_path(room.id), class: 'btn btn__first-btn btn-primary'
                   =link_to 'プレビュー', '', class: 'btn btn__second-btn'
+        .alert.alert-block{ id: "cover-#{ room.id }"}
+          .h5.space-top-5
+            %span このリスティングを削除する
+          .space-top-2
+          %p.delete-message
+            本当にこのリスティングを削除してもよろしいですか？この操作を元に戻せません。
+          .space-top-4
+          .btn-area
+            .btn.btn-host
+              = link_to '削除する', room_path( room.id ), method: :delete, class: 'btn-host'
+            .btn.btn__back-btn
+              %span 戻る
+
+
