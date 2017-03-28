@@ -31,7 +31,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'top#index'
-  resource :top, only: [:index, :new]
+  resource :top, only: [:index]
   resources :users, only: [:show]
-  resources :rooms, except: [:show]
+  resources :rooms, except: [:show] do
+    collection do
+      get 'search'
+    end
+  end
 end
