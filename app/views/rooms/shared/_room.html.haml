@@ -7,10 +7,7 @@
       .row.row-table
         .col-middle.space-sm-2.space-top-sm-4.col-md-5.listing-photo
           .media-cover.text-center
-            - if room.image?
-              =link_to image_tag(room.image, height: 185)
-            - else
-              =link_to image_tag('camera.jpeg', height: 185)
+            =link_to image_tag(room.image, height: 185)
         .col-sm-10.col-lg-7.col-middle
           .row.row-table
             .col-lg-10

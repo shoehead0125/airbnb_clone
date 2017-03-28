@@ -1,0 +1,7 @@
+.container-search
+  .row
+    .col-md-7.container_listing_list
+      .row.listing-cards-row
+        = render partial: 'rooms/shared/listing-card', collection: @rooms, as: 'room'
+    .col-md-5.container_map
+      #map-canvas
