@@ -39,11 +39,11 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @keyword = params[:room][:adress]
+    gon.keyword = params[:room][:adress]
     @rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
     gon.latlng = []
     @rooms.each do |room|
-      gon.latlng.push({ lat: room.latitude, lng: room.longitude })
+      gon.latlng.push(lat: room.latitude, lng: room.longitude)
     end
   end
 
