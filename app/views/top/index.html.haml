@@ -4,12 +4,29 @@
     世界にひとつの家を予</br>
     約。まるでローカルな街体</br>
     験。
-  = form_tag(controller: :tops, action: :new) do
-    .search_field
-      =text_field_tag :location
-      =text_field_tag :date
-      =select_tag 'number_of_people', '<option>1</option><option>2</option>'.html_safe
-      =button_tag '探す'
-%footer.footer
-  %img.logo_footer
-  .corprate_name &copy;Airbnb,Inc.
+  .room__search.row
+    = form_for(@room, url: search_rooms_path, method: :get) do |f|
+      = f.hidden_field :latitude, id: "hidden__latitude", name: "room[latitude]"
+      = f.hidden_field :longitude, id: "hidden__longitude", name: "room[longitude]"
+      .search_field.col-md-4
+        .search_field__location--label
+          =f.label :adress, '場所'
+        .search_field__location--input
+          =f.text_field :adress, placeholder: 'どこでも', class: 'search-input', id: 'search-input-location'
+      .search_field.col-md-4
+        .search_field__date--label
+          =label :search, :date, '日時'
+        .search_field__date--input
+          #datepicker.input-daterange.input-group
+            %input.input-sm.form-control{ name: 'start', type: 'text' }
+            %span.input-group-addon -
+            %input.input-sm.form-control{ name: 'end', type: 'text' }
+      .search_field.col-md-4
+        .search_field--especially.col-md-8
+          .search_field__occupancy--label
+            =label :search, :max_number, 'ゲスト'
+          .search_field__occupancy--input
+            =select_tag 'number_of_people', '<option>1</option><option>2</option>'.html_safe
+        .search_field--especially.col-md-4
+          .search_field__submit
+            =button_tag '探す'

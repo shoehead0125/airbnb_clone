@@ -33,16 +33,10 @@
       color: #FF5A5F;
     }
   }
-  .search_field{
-    margin-left: 200px;
-    input{
-      height: 90px;
-    }
-  }
 }
 
-.footer{
-  height: 32px;
+.container-brand-light{
+  padding: 48px 0;
   .corprate_name{
     text-align: center;
   }
@@ -54,4 +48,59 @@
   width: 40px;
 }
 
+.heading_tpbrp{
+  font-size: 1em;
+  margin-top: 0;
+}
+
+.list-layout{
+  list-style: none;
+  padding: 0;
+  font-weight: 100;
+}
+
+.footer_link{
+  color: gray;
+}
+
+.border-bottom{
+  border-bottom: solid;
+  border-bottom-color: gray;
+  border-bottom-width: 1px;
+}
+
+.corprate_name{
+  display: inline;
+  color: gray;
+}
+
+.room__search{
+  margin: 48px 180px 0;
+  border-right: solid 0.5px #dce0e0;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 #dce0e0;
+  display: table;
+  width: calc(100% - 320px);
+  .search_field{
+    border-right: solid 0.5px #dce0e0;
+  }
+}
+
+.search-input{
+  border: none;
+  width: 100%;
+  outline: 0;
+}
+
+.container_map{
+  height: 100vh;
+  #map-canvas{
+    height: 100%;
+  }
+}
+
+.container_listing_list{
+  padding-left: 24px;
+  padding-right: 24px;
+}
 

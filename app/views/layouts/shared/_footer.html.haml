@@ -1,0 +1,79 @@
+%footer.container-brand-light
+  .page-container-responsive.footer-container
+    .row.row-condensed.border-bottom
+      .language-curr-picker.col-md-2
+        .col-sm-6.col-md-12
+          .container_36rlri-o_O-block_r99te6
+            %label.label_hidden_1m8bb6v{ for: 'language-selector' } 言語を選択
+          .container_1nbitbn-o_O-block_r99te6
+            .selectContainer_y9ev9r
+              -# = select{ id: 'language-selector', class: 'select_1m4l9tm-o_O-block_r99te6', name: 'language-selector'} '', oprions_for_select: I18n.available_locales
+            %span.arrow_1pzmvmb
+              -# ⇒
+        .col-sm-6.col-md-12
+          .select.select-block.select-large
+            .container_36rlri-o_O-block_r99te6
+              %label.label_hidden_1m8bb6v{ for: 'currency-selector' } 通貨を選択
+              .container_1nbitbn-o_O-block_r99te6
+                .selectContainer_y9ev9r
+                  -# = select{ id: 'currency-selector', class: 'select_1m4l9tm-o_O-block_r99te6', name: 'currency-selector' } '', options_for_select: ['JPY', 'AED', 'PND']
+                %span.arrow_1pzmvmb
+      .col-md-2.col-md-offset-1.hide-sm
+        %section
+          %h3.heading_tpbrp AirBnb
+          %div{ style: "margin-top:16px;margin-bottom:0;margin-left:0;margin-right:0;"}
+            %ul.list-layout
+              %li
+                =link_to 'Airbnbとは', '#', class: 'footer_link'
+              %li
+                =link_to '採用情報', '#', class: 'footer_link'
+              %li
+                =link_to 'プレス', '#', class: 'footer_link'
+              %li
+                =link_to 'ポリシー', '#', class: 'footer_link'
+              %li
+                =link_to 'ヘルプ', '#', class: 'footer_link'
+              %li
+                =link_to 'ダイバーシティ&ビロンギング', '#', class: 'footer_link'
+      .col-md-2.col-md-offset-1.hide-sm
+        %section
+          %h3.heading_tpbrp スタッフのおすすめ
+          %div{ style: "margin-top:16px;margin-bottom:0;margin-left:0;margin-right:0;"}
+            %ul.list-layout
+              %li
+                =link_to '信頼と安全', '#', class: 'footer_link'
+              %li
+                =link_to 'お友達紹介クーポン', '#', class: 'footer_link'
+              %li
+                =link_to 'Airbnb Citizen', '#', class: 'footer_link'
+              %li
+                =link_to '出張', '#', class: 'footer_link'
+              %li
+              =link_to 'ガイドブック', '#', class: 'footer_link'
+      .col-md-2.col-md-offset-1.hide-sm
+        %section
+          %h3.heading_tpbrp ホスティング
+          %div{ style: "margin-top:16px;margin-bottom:0;margin-left:0;margin-right:0;"}
+            %ul.list-layout
+              %li
+                =link_to 'ホストになる理由', '#', class: 'footer_link'
+              %li
+                =link_to 'おもてなしの心', '#', class: 'footer_link'
+              %li
+                =link_to 'ホストの責任', '#', class: 'footer_link'
+    .row
+      .col-sm-12.col-md-6
+        = image_tag('airbnb_logo.jpg',:width => '80',:height => '40',:alt => 'airbnb_logo')
+        .corprate_name &copy;Airbnb,Inc.
+      .col-sm-12.col-md-6.space-top-2
+        %ul.list-inline
+          %li.pull-right
+            =link_to fa_icon('instagram'), '#', class: 'footer_link'
+          %li.pull-right
+            =link_to fa_icon('twitter'), '#', class: 'footer_link'
+          %li.pull-right
+            =link_to fa_icon('facebook'), '#', class: 'footer_link'
+          %li.pull-right
+            =link_to 'サイトマップ', '#', class: 'footer_link'
+          %li.pull-right
+            =link_to '利用規約とプライバシー', '#', class: 'footer_link'

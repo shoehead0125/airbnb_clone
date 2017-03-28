@@ -58,9 +58,12 @@ end
 
 gem 'annotate'
 gem 'autoprefixer-rails'
+gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'devise'
 gem 'erb2haml'
 gem 'font-awesome-rails'
+gem 'geocoder'
+gem 'gon'
 gem 'haml-rails'

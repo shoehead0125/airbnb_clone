@@ -13,14 +13,16 @@
 ActiveRecord::Schema.define(version: 20170322064205) do
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "category",   limit: 1, null: false
-    t.integer  "max_number", limit: 1, null: false
-    t.string   "adress",               null: false
+    t.integer  "category",   limit: 1,  null: false
+    t.integer  "max_number", limit: 1,  null: false
+    t.string   "adress",                null: false
     t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "name"
     t.string   "image"
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
     t.index ["user_id"], name: "index_rooms_on_user_id", using: :btree
   end
 

@@ -38,6 +38,15 @@ class RoomsController < ApplicationController
     end
   end
 
+  def search
+    gon.keyword = params[:room][:adress]
+    @rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
+    gon.latlng = []
+    @rooms.each do |room|
+      gon.latlng.push(lat: room.latitude, lng: room.longitude)
+    end
+  end
+
   private
 
   def set_room_edit
@@ -45,6 +54,6 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:category, :max_number, :adress, :name, :image)
+    params.require(:room).permit(:category, :max_number, :adress, :name, :image, :latitude, :longitude)
   end
 end
