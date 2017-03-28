@@ -14,6 +14,8 @@
       = f.label :adress
     .field-input
       = f.text_field :adress, class: 'form-control'
+      = f.hidden_field :latitude, id: "hidden__latitude"
+      = f.hidden_field :longitude, id: "hidden__longitude"
   - unless room.new_record?
     .form-group
     .field-label
