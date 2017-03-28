@@ -24,7 +24,7 @@ $(function(){
       }
     });
   });
-  var hidden_keyword = document.getElementById('keyword').innerText;
+  var hidden_keyword = gon.keyword;
   if (hidden_keyword.length) {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ "address": hidden_keyword }, function(results, status){
