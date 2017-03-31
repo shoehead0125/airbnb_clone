@@ -3,14 +3,6 @@
   margin: 30px auto 0;
 }
 
-.space-4{
-  margin-bottom: 24px;
-}
-
-.space-2{
-  margin-bottom: 12px;
-}
-
 .panel-show{
   width: 240px;
 }
@@ -20,7 +12,7 @@
   font-size: 16px;
   padding-top: 12px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #dce0e0;
+  border-bottom: 1px solid $border-gray;
 }
 
 .panel-body{

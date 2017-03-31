@@ -1,6 +1,6 @@
-%header.header
+%header.header.border-bottom
+  = link_to image_tag('airbnb_logo.jpg',:width => '80',:height => '40',:alt => 'airbnb_logo'), root_path
   -if user_signed_in?
-    = image_tag('airbnb_logo.jpg',:width => '80',:height => '40',:alt => 'airbnb_logo')
     .dropdown.pull-right.usermenu
       %a.dropdown.pull-right{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
         - if current_user.image?
@@ -17,7 +17,6 @@
       = link_to 'ホストになる', new_room_path, class: 'host pull-right'
     = link_to 'ホストする時間がない方はこちら', '', class: 'hire-a-host pull-right'
   -else
-    = image_tag('airbnb_logo.jpg',:width => '80',:height => '40',:alt => 'airbnb_logo')
     %a.pull-right{"data-target" => "#loginModal", "data-toggle" => "modal"} ログイン
     = render partial: "top/shared/login"
     %a.pull-right{"data-target" => "#formModal", "data-toggle" => "modal"} アカウント作成

@@ -6,32 +6,10 @@
   }
 }
 
-.space-5{
-  margin-bottom: 30px;
-}
-
-.space-top-1{
-  margin-top: 6px;
-}
-
-.space-top-2{
-  margin-top: 12px;
-}
-
-.space-top-4{
-  margin-top: 24px;
-}
-
-.space-top-5{
-  margin-top: 30px;
-}
-
 .h5{
   font-size: 16px;
   font-weight: bold;
 }
-
-
 
 .delete-message{
   font-size: 14px;
@@ -42,7 +20,7 @@
   height: 241px;
   width: 100%;
   z-index:1;
-  background-color: #c2e4e7;
+  background-color: $lightblue;
   display: none;
   position: absolute;
   top: 50px;
@@ -58,17 +36,9 @@
 }
 
 .btn-host{
-  border-color: #007a87;
-  background-color: #007a87;
+  border-color: $btn-green;
+  background-color: $btn-green;
   color: #fff;
-}
-
-.page-container-responsive{
-  width: 1080px;
-  padding-left: 24px;
-  padding-right: 24px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .subnav-list{
@@ -113,12 +83,12 @@
 .progress-bar__lean{
   height: 5px;
   .progress-bar__babu{
-    background-color: #00a699;
+    background-color: $gage-green;
   }
 }
 
 .text-babu{
-  color: #00a699;
+  color: $gage-green;
 }
 
 .col-middle{
@@ -126,16 +96,16 @@
 }
 
 .btn__first-btn{
-  border-color: #ff5a5f;
-  background-color: #ff5a5f;
+  border-color: $primary;
+  background-color: $primary;
 }
 
 .btn__second-btn{
-  border-color: #c4c4c4;
+  border-color: $btn-border-gray;
 }
 
 .btn__back-btn{
-  border-color: #c4c4c4;
+  border-color: $btn-border-gray;
 }
 
 .add_delete{

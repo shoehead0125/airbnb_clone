@@ -1,6 +1,7 @@
 .col-sm-12.col-md-6.space-4
   .listingCardWrapper
     .container-image
-      = image_tag(room.image)
+      = image_tag(room.image, class: 'listing-image')
     .linktolisting
-      = link_to room.name, ''
+      = link_to do
+        %strong #{room.name}
