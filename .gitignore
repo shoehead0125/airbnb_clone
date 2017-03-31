@@ -12,8 +12,4 @@
 !/log/.keep
 /tmp
 
-*.jpg
-*.jpeg
-*.png
-*.gif
 .env
