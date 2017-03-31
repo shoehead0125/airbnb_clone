@@ -2,22 +2,12 @@
   .page-container-responsive.footer-container
     .row.row-condensed.border-bottom
       .language-curr-picker.col-md-2
+        .col-sm-6.col-md-12.space-2
+          .selectContainer
+            = select_tag 'page[lan]', options_for_select(['日本語','English']), id: 'selector'
         .col-sm-6.col-md-12
-          .container_36rlri-o_O-block_r99te6
-            %label.label_hidden_1m8bb6v{ for: 'language-selector' } 言語を選択
-          .container_1nbitbn-o_O-block_r99te6
-            .selectContainer_y9ev9r
-              -# = select{ id: 'language-selector', class: 'select_1m4l9tm-o_O-block_r99te6', name: 'language-selector'} '', oprions_for_select: I18n.available_locales
-            %span.arrow_1pzmvmb
-              -# ⇒
-        .col-sm-6.col-md-12
-          .select.select-block.select-large
-            .container_36rlri-o_O-block_r99te6
-              %label.label_hidden_1m8bb6v{ for: 'currency-selector' } 通貨を選択
-              .container_1nbitbn-o_O-block_r99te6
-                .selectContainer_y9ev9r
-                  -# = select{ id: 'currency-selector', class: 'select_1m4l9tm-o_O-block_r99te6', name: 'currency-selector' } '', options_for_select: ['JPY', 'AED', 'PND']
-                %span.arrow_1pzmvmb
+          .selectContainer
+            = select_tag 'page[currency]', options_for_select(['JPY', 'USD']), id: 'selector'
       .col-md-2.col-md-offset-1.hide-sm
         %section
           %h3.heading_tpbrp AirBnb

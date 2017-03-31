@@ -1,4 +1,4 @@
-%main.main
+%main.main.border-bottom
   %h1
     %span#airbnb Airbnb
     世界にひとつの家を予</br>
@@ -18,15 +18,16 @@
           =label :search, :date, '日時'
         .search_field__date--input
           #datepicker.input-daterange.input-group
-            %input.input-sm.form-control{ name: 'start', type: 'text' }
-            %span.input-group-addon -
-            %input.input-sm.form-control{ name: 'end', type: 'text' }
+            %input.input-sm.date_input{ name: 'start', type: 'text', placeholder: 'いつでも', class: 'search-input' }
+            %span.input-group-addon ー
+            %input.input-sm.date_input{ name: 'end', type: 'text' }
       .search_field.col-md-4
         .search_field--especially.col-md-8
           .search_field__occupancy--label
-            =label :search, :max_number, 'ゲスト'
+            =f.label :max_number, 'ゲスト'
           .search_field__occupancy--input
-            =select_tag 'number_of_people', '<option>1</option><option>2</option>'.html_safe
+            =f.select :max_number, options_for_select(Array(1..16))
         .search_field--especially.col-md-4
           .search_field__submit
-            =button_tag '探す'
+            =f.submit '探す', class: 'btn__first-btn submit-btn'
+=javascript_include_tag 'top_function.js'
