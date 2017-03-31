@@ -1,7 +1,16 @@
-.container-search
+.container-search.border-bottom
   .row
     .col-md-7.container_listing_list
+      .search_nav.border-bottom
+        %ul.list-unstyled.list-inline
+          %li 部屋タイプ
+          %li 価格帯
+          %li 今すぐ予約
+          %li フィルター
+      .search_results
+        %p 検索結果: #{@rooms.length}件
       .row.listing-cards-row
         = render partial: 'rooms/shared/listing-card', collection: @rooms, as: 'room'
     .col-md-5.container_map
       #map-canvas
+=javascript_include_tag 'search.js'
