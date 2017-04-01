@@ -6,8 +6,7 @@
         - if current_user.image?
           = image_tag current_user.image, class: 'self-image'
         - else
-          %p ユーザー
-          -# %img{:alt => "", :height => "28", :src => "https://a0.muscache.com/defaults/user_pic-50x50.png?v=2", :width => "28"}
+          %img{:alt => "", :height => "28", :src => "https://a0.muscache.com/defaults/user_pic-50x50.png?v=2", :width => "28"}
       = render partial: 'top/shared/usermenu'
     = link_to 'ヘルプ', '', class: 'help pull-right'
     = link_to 'メッセージ', '', class: 'message pull-right'
