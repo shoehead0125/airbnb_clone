@@ -56,6 +56,7 @@ group :production do
   gem 'unicorn'
 end
 
+gem 'fog-aws', '= 1.2.1'
 gem 'annotate'
 gem 'autoprefixer-rails'
 gem 'bootstrap-datepicker-rails'
