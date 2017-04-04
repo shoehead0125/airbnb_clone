@@ -47,6 +47,16 @@ class RoomsController < ApplicationController
     end
   end
 
+  def show
+    @room = Room.find(params[:id])
+    @resavation = Resavation.new
+    check_out = Date.parse params[:check_out]
+    check_in = Date.parse params[:check_in]
+    @stay_days = (check_out - check_in).to_i
+    @sum_price = @room.price * @stay_days
+    @sum = @sum_price + @room.cleaning + @room.service
+  end
+
   private
 
   def set_room_edit
