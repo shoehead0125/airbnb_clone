@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   enum status: { normal: 0, host: 1 }
   has_many :rooms
+  has_many :resavations
 end

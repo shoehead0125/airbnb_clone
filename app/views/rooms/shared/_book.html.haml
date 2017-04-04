@@ -1,0 +1,37 @@
+#bookmodal
+  .book-container
+    %span.price
+      = number_to_currency(@room.price, locale: 'jp') + '×' + "#{@stay_days}" + '泊'
+    = form_for(@resavation) do |f|
+      = f.hidden_field :room_id, value: @room.id
+      #datepicker.input-daterange.row
+        .input-datarange--start.col-sm-6
+          .input-daterange--start--label
+            =f.label :start_day, 'チェックイン'
+          .input-daterange--input
+            =f.text_field :start_day, class: 'input-sm date_input', value: params[:check_in]
+        .input-datarange--end.col-sm-6
+          .input-daterange--end--label
+            =f.label :end_day, 'チェックアウト'
+          .input-daterange--end--input
+            =f.text_field :end_day, class: 'input-sm date_input', value: params[:check_out]
+      .choose_field
+        .choose_field--label
+          = f.label :occupancy, 'ゲスト'
+        .choose_field--input
+          = f.select :occupancy, options_for_select(Array(1..16)), autofocus: true, class: 'form-control'
+      .choose_field--text.border-bottom
+        = number_to_currency(@room.price, locale: 'jp') + '×' + "#{@stay_days}" + '泊'
+        = number_to_currency(@sum_price, locale: 'jp', class: 'pull-right')
+      .choose_field--text.border-bottom
+        清掃料金
+        = number_to_currency(@room.cleaning, locale: 'jp', class: 'pull-right')
+      .choose_field--text.border-bottom
+        サービス料
+        = number_to_currency(@room.service, locale: 'jp', class: 'pull-right')
+      .choose_field--text.border-bottom
+        合計
+        = number_to_currency(@sum, locale: 'jp', class: 'pull-right')
+        = f.hidden_field :price, value: @sum
+      = f.submit '予約をリクエスト', class: 'btn btn__first-btn btn-primary'
+

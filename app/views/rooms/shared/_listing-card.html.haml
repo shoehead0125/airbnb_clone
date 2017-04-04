@@ -3,5 +3,5 @@
     .container-image
       = image_tag(room.image, class: 'listing-image')
     .linktolisting
-      = link_to do
+      = link_to room_path(room.id, check_in: params[:start], check_out: params[:end]) do
         %strong #{room.name}
