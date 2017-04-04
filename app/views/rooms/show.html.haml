@@ -1,0 +1,45 @@
+.rooms-image-container
+  =image_tag( @room.image, width: '100%', height: '400' )
+%main#site-content
+  #summary.panel.room-section.no-border
+    .page-container-responsive
+      .row
+        .col-lg-8
+          .row.hide-md
+            %ul.list-inline
+              %li 概要
+              %li レビュー
+              %li ホストについて
+              %li 所在地
+          .row
+            .col-sm-12
+              .row.section-container.border-bottom
+                .hide-sm.col-md-10
+                  %h2 #{@room.name}
+                  .display-address
+                    = link_to '渋谷,東京,日本','#'
+                    = link_to '星', '#'
+                .hide-sm.text-center.col-md-2.text-muted.soace-top-2
+                  = image_tag(@room.user.image, width: '40px')
+                  = link_to @room.user.first_name, '#'
+              .row.border-bottom
+                .col-sm-3
+                  = fa_icon('home')
+                .col-sm-3
+                  = fa_icon('group')
+                .col-sm-3
+                  = fa_icon('star')
+                .col-sm-3
+                  = fa_icon('bed')
+              .row
+                .col-sm-12
+                  %h2 リスティングについて
+                  =link_to 'ホストに連絡', '#'
+              .row.review-container
+                %h2 レビュー
+        .col-lg-4
+          .book-it
+            = render partial: '/rooms/shared/book'
+
+= javascript_include_tag 'show.js'
+
