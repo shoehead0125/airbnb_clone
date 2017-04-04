@@ -10,19 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322064205) do
+ActiveRecord::Schema.define(version: 20170404060124) do
+
+  create_table "resavations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.date     "start_day",                        null: false
+    t.date     "end_day",                          null: false
+    t.integer  "price",                            null: false
+    t.integer  "status",     limit: 1, default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "occupancy"
+    t.integer  "user_id"
+    t.integer  "room_id"
+  end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "category",   limit: 1,  null: false
-    t.integer  "max_number", limit: 1,  null: false
-    t.string   "adress",                null: false
+    t.integer  "category",   limit: 1,                 null: false
+    t.integer  "max_number", limit: 1,                 null: false
+    t.string   "adress",                               null: false
     t.integer  "user_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "name"
     t.string   "image"
     t.float    "latitude",   limit: 24
     t.float    "longitude",  limit: 24
+    t.text     "outline",    limit: 65535
+    t.integer  "price"
+    t.integer  "cleaning",                 default: 0
+    t.integer  "service",                  default: 0
     t.index ["user_id"], name: "index_rooms_on_user_id", using: :btree
   end
 
