@@ -33,9 +33,10 @@ Rails.application.routes.draw do
   root 'top#index'
   resource :top, only: [:index]
   resources :users, only: [:show]
-  resources :rooms, except: [:show] do
+  resources :rooms do
     collection do
       get 'search'
     end
   end
+  resources :resavations, only: [:create, :show]
 end
