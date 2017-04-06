@@ -40,7 +40,19 @@ class RoomsController < ApplicationController
 
   def search
     gon.keyword = params[:room][:adress]
-    @rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
+    @rooms = []
+    rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
+    start_day = Date.parse(params[:start])
+    end_day = Date.parse(params[:end])
+    rooms.each do |room|
+      flag = 0
+      room.resavations.each do |resavation|
+        if start_day.between?(resavation.start_day, resavation.end_day) || end_day.between?(resavation.start_day, resavation.end_day)
+          flag = 1
+        end
+      end
+      @rooms << room if flag == 0
+    end
     gon.latlng = []
     @rooms.each do |room|
       gon.latlng.push(lat: room.latitude, lng: room.longitude)
