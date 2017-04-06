@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room_edit, only: [:edit, :update, :destroy]
+  before_action :set_room_edit, only: [:edit, :update, :destroy, :show]
   def index
     @rooms = current_user.rooms
   end
@@ -40,7 +40,9 @@ class RoomsController < ApplicationController
 
   def search
     gon.keyword = params[:room][:adress]
-    @rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
+    @rooms = []
+    rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
+    refine_rooms_by_date(rooms)
     gon.latlng = []
     @rooms.each do |room|
       gon.latlng.push(lat: room.latitude, lng: room.longitude)
@@ -48,10 +50,9 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
     @resavation = Resavation.new
-    check_out = Date.parse params[:check_out]
-    check_in = Date.parse params[:check_in]
+    check_out = modify_to_date(params[:check_out])
+    check_in = modify_to_date(params[:check_in])
     @stay_days = (check_out - check_in).to_i
     @sum_price = @room.price * @stay_days
     @sum = @sum_price + @room.cleaning + @room.service
@@ -65,5 +66,23 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:category, :max_number, :adress, :name, :image, :latitude, :longitude)
+  end
+
+  def refine_rooms_by_date(rooms)
+    start_day = modify_to_date(params[:start])
+    end_day = modify_to_date(params[:end])
+    rooms.each do |room|
+      flag = 0
+      room.resavations.each do |resavation|
+        if start_day.between?(resavation.start_day, resavation.end_day) || end_day.between?(resavation.start_day, resavation.end_day)
+          flag = 1
+        end
+      end
+      @rooms << room if flag.zero?
+    end
+  end
+
+  def modify_to_date(str)
+    Date.parse(str)
   end
 end
