@@ -18,9 +18,9 @@
           =label :search, :date, '日時'
         .search_field__date--input
           #datepicker.input-daterange.input-group
-            %input.input-sm.date_input{ name: 'start', type: 'text', placeholder: 'いつでも', class: 'search-input' }
+            %input.input-sm.date_input.search-input{ name: 'start', type: 'text', placeholder: 'いつでも' }
             %span.input-group-addon ー
-            %input.input-sm.date_input{ name: 'end', type: 'text' }
+            %input.input-sm.date_input.search-input{ name: 'end', type: 'text' }
       .search_field.col-md-4
         .search_field--especially.col-md-8
           .search_field__occupancy--label
