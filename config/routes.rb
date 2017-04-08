@@ -38,5 +38,10 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :resavations, only: [:create, :show]
+  resources :resavations, only: [:create, :show] do
+    resources :messages, only: [:create]
+    member do
+      get 'submit'
+    end
+  end
 end
