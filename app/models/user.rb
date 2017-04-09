@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :rooms
   has_many :resavations
   has_many :messages
+  has_many :reviews
 
   def name
     self.first_name + ' ' + self.last_name

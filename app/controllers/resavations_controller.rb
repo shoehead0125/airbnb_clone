@@ -1,4 +1,8 @@
 class ResavationsController < ApplicationController
+  def index
+    @resavations = Resavation.where(user_id: current_user.id)
+  end
+
   def create
     @resavation = Resavation.new(resavation_params)
     if @resavation.save

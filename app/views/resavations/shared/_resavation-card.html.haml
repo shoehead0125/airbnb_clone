@@ -1,0 +1,9 @@
+.col-sm-12.col-md-6.space-4
+  .resavationCardWrapper
+    .container-image
+      = image_tag(resavation.room.image, class: 'listing-image')
+    .linktolisting
+      = link_to new_room_review_path(resavation.room.id, resavation_id: resavation.id) do
+        %strong #{resavation.room.name}
+    .rating--room
+      %span{ class: "rating-star rate-#{resavation.room.reviews_average}0"}

@@ -37,6 +37,8 @@
                   =link_to 'ホストに連絡', '#'
               .row.review-container
                 %h2 レビュー
+                %ul.review-list
+                  = render partial: '/rooms/shared/review', collection: @room.reviews
         .col-lg-4
           .book-it
             = render partial: '/rooms/shared/book'
