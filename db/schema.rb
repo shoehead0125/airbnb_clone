@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406091735) do
+ActiveRecord::Schema.define(version: 20170409053734) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "body",          limit: 65535, null: false
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20170406091735) do
     t.integer  "occupancy"
     t.integer  "user_id"
     t.integer  "room_id"
+  end
+
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.text     "body",       limit: 65535, null: false
+    t.integer  "user_id",                  null: false
+    t.integer  "room_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "rate",                     null: false
+    t.index ["room_id"], name: "index_reviews_on_room_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -77,5 +88,7 @@ ActiveRecord::Schema.define(version: 20170406091735) do
 
   add_foreign_key "messages", "resavations"
   add_foreign_key "messages", "users"
+  add_foreign_key "reviews", "rooms"
+  add_foreign_key "reviews", "users"
   add_foreign_key "rooms", "users"
 end

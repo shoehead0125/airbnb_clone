@@ -34,11 +34,12 @@ Rails.application.routes.draw do
   resource :top, only: [:index]
   resources :users, only: [:show]
   resources :rooms do
+    resources :reviews, only: [:new, :create]
     collection do
       get 'search'
     end
   end
-  resources :resavations, only: [:create, :show] do
+  resources :resavations, only: [:create, :show, :index] do
     resources :messages, only: [:create]
     member do
       get 'submit'
