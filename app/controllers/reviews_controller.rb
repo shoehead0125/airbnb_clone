@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.status_review = 1
     if @review.save
       redirect_to resavations_path
     else
