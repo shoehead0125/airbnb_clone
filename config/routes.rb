@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   root 'top#index'
   resource :top, only: [:index]
   resources :users, only: [:show]
+  resources :tours, only: [:new, :index]
   resources :rooms do
     resources :reviews, only: [:new, :create]
     collection do

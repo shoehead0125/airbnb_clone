@@ -11,6 +11,7 @@
     = link_to 'ヘルプ', '', class: 'help pull-right'
     = link_to 'メッセージ', '', class: 'message pull-right'
     = link_to '旅行', resavations_path, class: 'travel pull-right'
+    = link_to 'ツアー', new_tour_path, class: 'tour pull-right'
     - if current_user.rooms
       = link_to 'ホスト', rooms_path, class: 'host pull-right'
     - else

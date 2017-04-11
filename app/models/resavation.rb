@@ -1,6 +1,7 @@
 class Resavation < ApplicationRecord
   belongs_to :user
   belongs_to :room
+  belongs_to :tour
   has_many :messages
   enum status: { request: 0, confirm: 1 }
   enum status_review: { not_post: 0, posted: 1}
