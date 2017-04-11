@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409071830) do
+ActiveRecord::Schema.define(version: 20170409085414) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "body",          limit: 65535, null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170409071830) do
     t.integer  "user_id"
     t.integer  "room_id"
     t.integer  "status_review", limit: 1, default: 0
+    t.integer  "tour_id",                 default: 0
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -64,6 +65,14 @@ ActiveRecord::Schema.define(version: 20170409071830) do
     t.index ["user_id"], name: "index_rooms_on_user_id", using: :btree
   end
 
+  create_table "tours", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "user_id",    null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tours_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "email",                                default: "", null: false
     t.string   "first_name",                                        null: false
@@ -92,4 +101,5 @@ ActiveRecord::Schema.define(version: 20170409071830) do
   add_foreign_key "reviews", "rooms"
   add_foreign_key "reviews", "users"
   add_foreign_key "rooms", "users"
+  add_foreign_key "tours", "users"
 end

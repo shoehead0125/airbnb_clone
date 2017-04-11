@@ -1,10 +1,4 @@
 $(function(){
-  $('.date_input').on('click',function(){
-    $('.input-group-addon').css('visibility','visible')
-  });
-  $('.input-daterange').datepicker({
-    language: "ja"
-  });
   function initialize() {
     var input = document.getElementById('search-input-location');
     var options = { types: ["(cities)"] };
