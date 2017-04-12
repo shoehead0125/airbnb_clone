@@ -1,11 +1,11 @@
 .tour_header
   旅の予定を入力してください。
 = form_for @form, url: '/tours', method: :get do |f|
+  = render partial: '/tours/shared/search', locals:{ i: 0, f: f }
   = render partial: '/tours/shared/search', locals:{ i: 1, f: f }
   = render partial: '/tours/shared/search', locals:{ i: 2, f: f }
   = render partial: '/tours/shared/search', locals:{ i: 3, f: f }
   = render partial: '/tours/shared/search', locals:{ i: 4, f: f }
-  = render partial: '/tours/shared/search', locals:{ i: 5, f: f }
   = f.submit '一括検索', class: 'btn__first-btn', id: 'btn__bulk'
 =javascript_include_tag 'date_picker.js'
 =javascript_include_tag 'tour.js'

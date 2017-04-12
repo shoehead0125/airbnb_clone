@@ -1,21 +1,21 @@
-.room__search.row{ id: "room__search-#{i}", style: "#{(i == 1)? '': 'display: none;'}" }
-  = f.hidden_field "latitude_#{i}", id: "hidden__latitude-#{i}", name: "room-#{i}[latitude]"
-  = f.hidden_field "longitude_#{i}", id: "hidden__longitude-#{i}", name: "room-#{i}[longitude]"
+.room__search.row{ id: "room__search-#{i}", style: "#{(i == 0)? '': 'display: none;'}" }
+  = f.hidden_field "latitude_#{i}", id: "hidden__latitude-#{i}", name: "room[#{i}][latitude]"
+  = f.hidden_field "longitude_#{i}", id: "hidden__longitude-#{i}", name: "room[#{i}][longitude]"
   .search_field.col-md-4
     .search_field__location--label
       =f.label "address_#{i}", '場所'
     .search_field__location--input
-      =f.text_field "address_#{i}", placeholder: 'どこでも', class: "search-input search-input-location", id: "search-input-location-#{i}", name: "room-#{i}[adress]"
+      =f.text_field "address_#{i}", placeholder: 'どこでも', class: "search-input search-input-location", id: "search-input-location-#{i}", name: "room[#{i}][adress]"
   .search_field.col-md-4
     .search_field__date--label
       =label :search, :date, '日時'
     .search_field__date--input
       #datepicker.input-daterange.input-group
-        %input.input-sm.date_input.search-input{ id: "search-input-date-#{i}", name: "room-#{i}[start]", type: 'text', placeholder: 'いつでも' }
+        %input.input-sm.date_input.search-input{ id: "search-input-date-#{i}", name: "room[#{i}][start]", type: 'text', placeholder: 'いつでも' }
         %span.input-group-addon ー
-        %input.input-sm.date_input.search-input_ex{ id: "search-inpu-date-#{i}", name: "room-#{i}[end]", type: 'text' }
+        %input.input-sm.date_input.search-input_ex{ id: "search-inpu-date-#{i}", name: "room[#{i}][end]", type: 'text' }
   .search_field.col-md-4
     .search_field__occupancy--label
       =f.label "occupancy_#{i}", 'ゲスト'
     .search_field__occupancy--input
-      =f.select "occupancy_#{i}", options_for_select(Array(1..16)), name: "room-#{i}[occupancy]", id: "search-input-occupancy-#{i}"
+      =f.select "occupancy_#{i}", options_for_select(Array(1..16)), name: "room[#{i}][occupancy]", id: "search-input-occupancy-#{i}"
