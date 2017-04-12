@@ -26,7 +26,7 @@ $(function(){
     var options = { types: ["(cities)"] };
     autocomplete = new google.maps.places.Autocomplete(input, options);
   }
-  $('.search-input-location').on('keyup',function(){
+  $('.search-input-location').on('change',function(){
     var target = $(this);
     var target_id = target.attr('id');
     initialize(target_id);
