@@ -1,12 +1,18 @@
 class ToursController < ApplicationController
   def index
-    @rooms = [[]]
+    @rooms = Array.new(5).map{Array.new}
     @keyword = []
+    @starts = []
+    @ends = []
+    @occupancys = []
     gon.keyword = []
-    gon.latlng = [[]]
+    gon.latlng = Array.new(5).map{Array.new}
     params[:room].each do |i, params|
       break if params[:adress] == ''
       gon.keyword[i.to_i] = params[:adress]
+      @starts.push(params[:start])
+      @ends.push(params[:end])
+      @occupancys.push(params[:occupancy])
       @keyword.push(params[:adress])
       rooms = Room.near([params[:latitude], params[:longitude]], 50)
       refine_rooms_by_date(i, rooms, params)
