@@ -11,7 +11,7 @@ $(function(){
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),mapOpt);
-        $(gon.latlng[0]).each(function(j){
+        $(gon.latlng[i]).each(function(j){
           var latlng = new google.maps.LatLng( gon.latlng[i][j].lat, gon.latlng[i][j].lng, false );
           var marker_j = new google.maps.Marker({
           map: map,
