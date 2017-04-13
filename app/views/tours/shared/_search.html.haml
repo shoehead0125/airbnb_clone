@@ -18,4 +18,4 @@
     .search_field__occupancy--label
       =f.label "occupancy_#{i}", 'ゲスト'
     .search_field__occupancy--input
-      =f.select "occupancy_#{i}", options_for_select(Array(1..16)), name: "room[#{i}][occupancy]", id: "search-input-occupancy-#{i}"
+      =select_tag "occupancy_#{i}", options_for_select(Array(1..16)), name: "room[#{i}][occupancy]", id: "search-input-occupancy-#{i}"

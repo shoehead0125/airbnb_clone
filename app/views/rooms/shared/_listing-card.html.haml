@@ -5,3 +5,5 @@
     .linktolisting
       = link_to room_path(room.id, check_in: params[:start], check_out: params[:end]) do
         %strong #{room.name}
+      -if request.path_info == "/tours"
+        = check_box_tag "resavation[#{i}][room_id]", room.id
