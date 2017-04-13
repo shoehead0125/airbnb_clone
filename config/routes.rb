@@ -45,5 +45,8 @@ Rails.application.routes.draw do
     member do
       get 'submit'
     end
+    collection do
+      post 'bulk_create'
+    end
   end
 end
