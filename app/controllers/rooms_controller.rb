@@ -39,11 +39,11 @@ class RoomsController < ApplicationController
   end
 
   def search
-    gon.keyword = params[:room][:address]
     @rooms = []
-    rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
-    refine_rooms_by_date(rooms)
     gon.latlng = []
+    gon.keyword = params[:form][:address]
+    rooms = Room.near([params[:form][:latitude], params[:form][:longitude]], 50)
+    refine_rooms_by_date(rooms)
     @rooms.each do |room|
       gon.latlng.push(lat: room.latitude, lng: room.longitude)
     end
@@ -69,8 +69,8 @@ class RoomsController < ApplicationController
   end
 
   def refine_rooms_by_date(rooms)
-    start_day = modify_to_date(params[:start])
-    end_day = modify_to_date(params[:end])
+    start_day = modify_to_date(params[:form][:start_day])
+    end_day = modify_to_date(params[:form][:end_day])
     rooms.each do |room|
       flag = 0
       room.resavations.each do |resavation|
@@ -80,9 +80,5 @@ class RoomsController < ApplicationController
       end
       @rooms << room if flag.zero?
     end
-  end
-
-  def modify_to_date(str)
-    Date.parse(str)
   end
 end

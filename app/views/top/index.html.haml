@@ -5,9 +5,9 @@
     約。まるでローカルな街体</br>
     験。
   .room__search.row
-    = form_for(@room, url: search_rooms_path, method: :get) do |f|
-      = f.hidden_field :latitude, id: "hidden__latitude", name: "room[latitude]"
-      = f.hidden_field :longitude, id: "hidden__longitude", name: "room[longitude]"
+    = form_for(@form, url: search_rooms_path, method: :get) do |f|
+      = f.hidden_field :latitude, id: "hidden__latitude"
+      = f.hidden_field :longitude, id: "hidden__longitude"
       .search_field.col-md-4
         .search_field__location--label
           =f.label :address, '場所'
@@ -15,18 +15,19 @@
           =f.text_field :address, placeholder: 'どこでも', class: 'search-input', id: 'search-input-location'
       .search_field.col-md-4
         .search_field__date--label
-          =label :search, :date, '日時'
+          =f.label :start_day, '日時'
         .search_field__date--input
           #datepicker.input-daterange.input-group
-            %input.input-sm.date_input.search-input{ name: 'start', type: 'text', placeholder: 'いつでも' }
+            =f.text_field :start_day, class: 'input-sm.date_input search-input', placeholder: 'いつでも'
             %span.input-group-addon ー
-            %input.input-sm.date_input.search-input{ name: 'end', type: 'text' }
+            =f.text_field :end_day, class: 'date_input search-input'
       .search_field.col-md-4
         .search_field--especially.col-md-8
           .search_field__occupancy--label
-            =f.label :max_number, 'ゲスト'
-          .search_field__occupancy--input
-            =f.select :max_number, options_for_select(Array(1..16))
+            =f.label :occupancy, 'ゲスト'
+          .search_field__occupancy--input.space-top-1
+            =f.select :occupancy, options_for_select(Array(1..16))
+            %span 人
         .search_field--especially.col-md-4
           .search_field__submit
             =f.submit '探す', class: 'btn__first-btn submit-btn'

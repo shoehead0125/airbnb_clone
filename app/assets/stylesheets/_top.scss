@@ -16,7 +16,7 @@
 }
 
 .main{
-  height: calc(100% - 96px);
+  height: calc(100% - 382px);
   h1{
     height: 200px;
     width: 800px;
@@ -144,5 +144,17 @@
   .submit-btn{
     height: 40px;
     color: white;
+  }
+}
+
+.search_field--especially{
+  padding: 0;
+}
+
+.search_field__occupancy--input{
+  font-size: 20px;
+  #form_occupancy{
+    border-style: none;
+    background-color: white;
   }
 }
