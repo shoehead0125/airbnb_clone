@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409085414) do
+ActiveRecord::Schema.define(version: 20170414034415) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "body",          limit: 65535, null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170409085414) do
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "category",   limit: 1,                 null: false
     t.integer  "max_number", limit: 1,                 null: false
-    t.string   "adress",                               null: false
+    t.string   "address",                              null: false
     t.integer  "user_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
