@@ -43,8 +43,4 @@ class ToursController < ApplicationController
       @rooms[i.to_i] << room if flag.zero?
     end
   end
-
-  def modify_to_date(str)
-    Date.parse(str)
-  end
 end

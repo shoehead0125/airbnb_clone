@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :birthday])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :birthday, :introduce, :image])
   end
+
+  def modify_to_date(str)
+    Date.parse(str)
+  end
 end
