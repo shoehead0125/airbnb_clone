@@ -39,7 +39,7 @@ class RoomsController < ApplicationController
   end
 
   def search
-    gon.keyword = params[:room][:adress]
+    gon.keyword = params[:room][:address]
     @rooms = []
     rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
     refine_rooms_by_date(rooms)
@@ -65,7 +65,7 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:category, :max_number, :adress, :name, :image, :latitude, :longitude)
+    params.require(:room).permit(:category, :max_number, :address, :name, :image, :latitude, :longitude)
   end
 
   def refine_rooms_by_date(rooms)

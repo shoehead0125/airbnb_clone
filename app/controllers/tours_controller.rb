@@ -8,12 +8,12 @@ class ToursController < ApplicationController
     gon.keyword = []
     gon.latlng = Array.new(5).map{Array.new}
     params[:room].each do |i, params|
-      break if params[:adress] == ''
-      gon.keyword[i.to_i] = params[:adress]
+      break if params[:address] == ''
+      gon.keyword[i.to_i] = params[:address]
       @starts.push(params[:start])
       @ends.push(params[:end])
       @occupancys.push(params[:occupancy])
-      @keyword.push(params[:adress])
+      @keyword.push(params[:address])
       rooms = Room.near([params[:latitude], params[:longitude]], 50)
       refine_rooms_by_date(i, rooms, params)
     end

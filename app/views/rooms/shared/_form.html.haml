@@ -11,9 +11,9 @@
       = f.select :max_number, options_for_select(Array(1..16)), autofocus: true, class: 'form-control'
   .form-group
     .field-label
-      = f.label :adress
+      = f.label :address
     .field-input
-      = f.text_field :adress, class: 'form-control'
+      = f.text_field :address, class: 'form-control'
       = f.hidden_field :latitude, id: "hidden__latitude"
       = f.hidden_field :longitude, id: "hidden__longitude"
   - unless room.new_record?

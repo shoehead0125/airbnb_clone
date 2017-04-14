@@ -10,9 +10,9 @@
       = f.hidden_field :longitude, id: "hidden__longitude", name: "room[longitude]"
       .search_field.col-md-4
         .search_field__location--label
-          =f.label :adress, '場所'
+          =f.label :address, '場所'
         .search_field__location--input
-          =f.text_field :adress, placeholder: 'どこでも', class: 'search-input', id: 'search-input-location'
+          =f.text_field :address, placeholder: 'どこでも', class: 'search-input', id: 'search-input-location'
       .search_field.col-md-4
         .search_field__date--label
           =label :search, :date, '日時'

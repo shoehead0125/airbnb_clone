@@ -4,8 +4,8 @@ class Room < ApplicationRecord
   has_many :resavations
   has_many :reviews
   enum category: { reserved: 0, privated: 1, shared: 2 }
-  geocoded_by :adress
-  after_validation :geocode, if: :adress_changed?
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def reviews_average
     reviews.average(:rate).to_i.round
