@@ -13,8 +13,8 @@
                 .input-field-label
                   = f.label :body, '簡単なご挨拶後にご旅行目的をお書きください。'
                 .input-filed-input
-                  = f.text_field :body, class: 'form-control message_input'
-                = f.submit '次へ', id: 'next_btn'
+                  = f.text_area :body, class: 'form-control message_input space-2'
+                = f.submit '次へ', class: 'next-btn btn__first-btn'
         .panel.panel-default
           .panel-heading
             %h4.panel-title
@@ -27,64 +27,20 @@
               -else
                 ユーザーのリクエストを承認しましょう！
             .panel-body
-              %ul.messages-list
+              %ul.messages-list.list-unstyled
                 = render partial: 'resavations/shared/message', collection: @resavation.messages
-            -if @resavation.status == 'request'
-              -if current_user == @resavation.room.user
-                = link_to '承認', submit_resavation_path
+              -if @resavation.status == 'request'
+                -if current_user == @resavation.room.user
+                  .next-btn.btn__first-btn.text-center.text-middium
+                    = link_to '承認', submit_resavation_path, class: 'accept-btn'
+                -else
+                  .text-center
+                    %h3 承認待ち
               -else
-                承認待ち
-            -else
-              承認済み
+                .text-center
+                  %h3 承認済み
     .col-md-5
-      .listing-card
-        .background-cover{ style: "background-image: url(#{@resavation.room.image})"}
-        .pull-right.space-3.host-profile-photo
-          = image_tag(@resavation.room.user.image,class: 'host-profile-photo-src')
-        .panel
-          .panel-body
-            .text-muted.space-2
-              %span ホストは #{@resavation.room.user.name}
-            .sidebar-text-large
-              #{@resavation.room.name}
-            .list-layout
-            .text-muted
-              %ul.list-layout
-                %li
-                  #{@resavation.room.category}
-          .panel-body
-            .row
-              .col-sm-5
-                .text-muted.space-2
-                  %p チェックイン
-                  #{@resavation.start_day}
-              .col-sm-2
-                =fa_icon('chevron-right', class: 'icon-light-gray')
-              .col-sm-5
-                .text-muted.space-2
-                  %p チェックアウト
-                  #{@resavation.end_day}
-          .panel-body
-            %table.listing-card__billing-table
-              %tbody
-                %tr.price-item
-                  %th.price-item__header
-                    #{@resavation.room.price} × #{@resavation.days} 泊
-                  %td.text-right.price-item__price
-                    #{@sum_price_of_stay}
-                %tr.price-item
-                  %th.price-item__header
-                    清掃料金
-                  %td.text-right.price-item__price
-                    #{@resavation.room.cleaning}
-                %tr.price-item
-                  %th.price-item__header
-                    サービス料金
-                  %td.text-right.price-item__price
-                    #{@resavation.room.service}
-          .panel-body
-            .sidebar-text-large.space-2.summary-card__total-price
-              = number_to_currency(@resavation.price, locale: 'jp')
+      = render partial: 'resavations/shared/book_it', locals: { resavation: @resavation }
 = javascript_include_tag 'resavation_show.js'
 
 

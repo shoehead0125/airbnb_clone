@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @resavation = Resavation.find(params[:resavation_id])
     @room = Room.find(params[:room_id])
+    geocoder = Geocoder.search("#{ @resavation.room.latitude }, #{ @resavation.room.longitude }")
+    @location = geocoder[0].address_components
   end
 
   def create

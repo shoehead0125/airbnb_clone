@@ -1,4 +1,8 @@
-%li
-  #{message.user.name}
-  #{message.created_at}
-  #{message.body}
+%li.border-bottom
+  = image_tag(message.user.image, width: '54px', height: '54px', class: 'user_img pull-left')
+  .user-profile.pull-left
+    %span #{ message.user.name }
+    %br
+    %span #{ message.created_at.strftime('%Y年%m月%d日 %H:%M:%S') }
+  .user-review
+    #{ message.body }
