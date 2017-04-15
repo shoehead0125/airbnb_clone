@@ -9,8 +9,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.status_review = 1
     if @review.save
+      @review.resavation.update(status_review: 1)
       redirect_to resavations_path
     else
       render action: :new
@@ -19,6 +19,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:body, :rate).merge(room_id: params[:room_id], user_id: current_user.id)
+    params.require(:review).permit(:body, :rate).merge(room_id: params[:room_id], user_id: current_user.id, resavation_id: params[:resavation_id])
   end
 end

@@ -5,6 +5,7 @@
         %h1 レビュー済みです。
       -else
         = form_for ([@room, @review]) do |f|
+          = hidden_field_tag :resavation_id, @resavation.id
           .review-field--labal
             = f.label :body, '宿泊した感想を記入してください。'
           .review-field--input
