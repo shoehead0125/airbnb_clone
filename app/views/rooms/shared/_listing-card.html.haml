@@ -3,7 +3,17 @@
     .container-image
       = image_tag(room.image, class: 'listing-image')
     .linktolisting
-      = link_to room_path(room.id, check_in: params[:start], check_out: params[:end]) do
-        %strong #{room.name}
+      = link_to room_path(room.id, start_day: params[:form][:start_day], end_day: params[:form][:end_day]) do
+        %span
+          = number_to_currency(room.price, locale: 'jp')
+        %strong #{ room.outline }
+    .listing_type
+      /TODO: 日本語訳はまた後で実装
+      %span #{ room.category }
+    .rating--room
+      %span{ class: "rating-star rate-#{ room.reviews_average }0"}
+      %span レビュー件数は#{ room.reviews.length }件
       -if request.path_info == "/tours"
-        = check_box_tag "resavation[#{i}][room_id]", room.id
+        .choose_room
+          %span 選択する
+          = check_box_tag "resavation[#{i}][room_id]", room.id
