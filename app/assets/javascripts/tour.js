@@ -37,8 +37,8 @@ $(function(){
       if(status == google.maps.GeocoderStatus.OK) {
         var lat = results[0].geometry.location.lat();
         var lng = results[0].geometry.location.lng();
-        var lat1 = document.getElementById('hidden__latitude-' + id_number);
-        var lng1 = document.getElementById('hidden__longitude-' + id_number);
+        var lat1 = document.getElementById('form_' + id_number + '_latitude');
+        var lng1 = document.getElementById('form_' + id_number + '_longitude');
         lat1.value = lat.toFixed(6);
         lng1.value = lng.toFixed(6);
       }

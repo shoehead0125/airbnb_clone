@@ -1,14 +1,12 @@
-.tour_header
-  旅の予定を入力してください。
-= form_for @form, url: '/tours', method: :get do |f|
-  = render partial: '/tours/shared/search', locals:{ i: 0, f: f }
-  = render partial: '/tours/shared/search', locals:{ i: 1, f: f }
-  = render partial: '/tours/shared/search', locals:{ i: 2, f: f }
-  = render partial: '/tours/shared/search', locals:{ i: 3, f: f }
-  = render partial: '/tours/shared/search', locals:{ i: 4, f: f }
-  = f.submit '一括検索', class: 'btn__first-btn', id: 'btn__bulk'
+.container_tour_search.border-bottom
+  .tour_header
+    %h4 旅の予定を入力してください(渋谷⇒京都⇒金閣時など)
+  = form_tag '/tours', method: :get do
+    = render partial: '/tours/shared/search', locals:{ i: 0 }
+    = render partial: '/tours/shared/search', locals:{ i: 1 }
+    = render partial: '/tours/shared/search', locals:{ i: 2 }
+    = render partial: '/tours/shared/search', locals:{ i: 3 }
+    = render partial: '/tours/shared/search', locals:{ i: 4 }
+    = submit_tag '一括検索', class: 'btn__first-btn space-top-3 space-3', id: 'search__bulk'
 =javascript_include_tag 'date_picker.js'
 =javascript_include_tag 'tour.js'
-
-
-
