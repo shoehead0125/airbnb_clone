@@ -3,29 +3,50 @@
     .field-label
       = f.label :type
     .field-input
-      = f.select :category, Room.categories.keys.to_a, autofocus: true, class: 'form-control'
+      = f.select :category, Room.categories.keys.to_a, {}, class: 'form-control', autofocus: true
   .form-group
     .field-label
-      = f.label :max_number
+      = f.label :max_number, 'Occupancy'
     .field-input
-      = f.select :max_number, options_for_select(Array(1..16)), autofocus: true, class: 'form-control'
+      = f.select :max_number, options_for_select(Array(1..16)), {}, class: 'form-control', autofocus: true
   .form-group
     .field-label
-      = f.label :adress
+      = f.label :address
     .field-input
-      = f.text_field :adress, class: 'form-control'
+      = f.text_field :address, class: 'form-control'
       = f.hidden_field :latitude, id: "hidden__latitude"
       = f.hidden_field :longitude, id: "hidden__longitude"
   - unless room.new_record?
     .form-group
-    .field-label
-      = f.label :name
-    .field-input
-      = f.text_field :name, class: 'form-control'
+      .field-label
+        = f.label :name
+      .field-input
+        = f.text_field :name, class: 'form-control'
     .form-group
-    .field-label
-      = f.label :image
-    .field-input
-      = f.file_field :image
-  .actions
+      .field-label
+        = f.label :image
+      .field-input
+        = f.file_field :image, class: 'file_form'
+    .form-group
+      .field-label
+        = f.label :outline
+      .field-input
+        = f.text_area :outline, class: 'form-control'
+    .form-group.row
+      .col-md-4
+        .field-label
+          = f.label :price
+        .field-input
+          = f.text_field :price, class: 'form-control'
+      .col-md-4
+        .field-label
+          = f.label :cleaning
+        .field-input
+          = f.text_field :cleaning, class: 'form-control'
+      .col-md-4
+        .field-label
+          = f.label :service
+        .field-input
+          = f.text_field :service, class: 'form-control'
+  .actions.space-top-3
     = f.submit "Save room", class: 'btn'

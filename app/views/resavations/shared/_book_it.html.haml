@@ -1,0 +1,52 @@
+.listing-card
+  .background-cover{ style: "background-image: url(#{@resavation.room.image})"}
+  .pull-right.space-3.host-profile-photo
+    = image_tag(resavation.room.user.image,class: 'host-profile-photo-src')
+  .panel
+    .panel-body.border-bottom
+      .text-muted.space-2
+        %span ホストは #{ resavation.room.user.name }です。
+      .sidebar-text-large
+        %h2 #{ resavation.room.name }
+      .list-layout
+      .text-muted
+        %ul.list-layout
+          %li
+            %span #{ resavation.room.category }・レビュー#{ resavation.room.reviews.length }件
+          %li
+            %span #{ @location[6]['long_name'] }, #{ @location[5]['long_name'] }
+    .panel-body.border-bottom
+      .row
+        .col-sm-5
+          .text-muted.space-2
+            %span チェックイン
+            %br
+            %span.book_it--date #{ resavation.start_day }
+        .col-sm-2
+          =fa_icon('chevron-right', class: 'icon-light-gray space-top-2')
+        .col-sm-5
+          .text-muted.space-2
+            %span チェックアウト
+            %br
+            %span.book_it--date #{ resavation.end_day }
+    .panel-body.border-bottom
+      %table.listing-card__billing-table
+        .price-items
+          .price-item__accommodation.space-2
+            %span
+              =number_to_currency(resavation.room.price, locale: 'jp')
+            %span × #{ resavation.days }泊
+            %span.pull-right.price-item__price
+              = number_to_currency(@sum_price_of_stay, locale: 'jp')
+          .price-item__cleaning.space-2
+            %span.price-item__header 清掃料金
+            %span.pull-right.price-item__price
+              = number_to_currency(resavation.room.cleaning, locale: 'jp')
+          .price-item__service.space-2
+            %span.price-item__header サービス料金
+            %span.pull-right.price-item__price
+              = number_to_currency(resavation.room.service, locale: 'jp')
+    .panel-body
+      %h2.price-sum_header 合計額
+      %h2.pull-right.summary-card__total-price
+        = number_to_currency(resavation.price, locale: 'jp')

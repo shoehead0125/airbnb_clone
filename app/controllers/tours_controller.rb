@@ -7,13 +7,13 @@ class ToursController < ApplicationController
     @occupancys = []
     gon.keyword = []
     gon.latlng = Array.new(5).map{Array.new}
-    params[:room].each do |i, params|
-      break if params[:adress] == ''
-      gon.keyword[i.to_i] = params[:adress]
-      @starts.push(params[:start])
-      @ends.push(params[:end])
+    params[:form].each do |i, params|
+      break if params[:address] == ''
+      gon.keyword[i.to_i] = params[:address]
+      @starts.push(params[:start_day])
+      @ends.push(params[:end_day])
       @occupancys.push(params[:occupancy])
-      @keyword.push(params[:adress])
+      @keyword.push(params[:address])
       rooms = Room.near([params[:latitude], params[:longitude]], 50)
       refine_rooms_by_date(i, rooms, params)
     end
@@ -24,15 +24,13 @@ class ToursController < ApplicationController
     end
   end
 
-  def new
-    @form = TourForm.new
-  end
+  def new; end
 
   private
 
   def refine_rooms_by_date(i, rooms, params)
-    start_day = modify_to_date(params[:start])
-    end_day = modify_to_date(params[:end])
+    start_day = modify_to_date(params[:start_day])
+    end_day = modify_to_date(params[:end_day])
     rooms.each do |room|
       flag = 0
       room.resavations.each do |resavation|
@@ -42,9 +40,5 @@ class ToursController < ApplicationController
       end
       @rooms[i.to_i] << room if flag.zero?
     end
-  end
-
-  def modify_to_date(str)
-    Date.parse(str)
   end
 end

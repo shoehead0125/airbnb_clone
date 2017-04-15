@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409085414) do
+ActiveRecord::Schema.define(version: 20170415103429) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "body",          limit: 65535, null: false
@@ -37,12 +37,14 @@ ActiveRecord::Schema.define(version: 20170409085414) do
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.text     "body",       limit: 65535, null: false
-    t.integer  "user_id",                  null: false
-    t.integer  "room_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "rate",                     null: false
+    t.text     "body",          limit: 65535, null: false
+    t.integer  "user_id",                     null: false
+    t.integer  "room_id",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "rate",                        null: false
+    t.integer  "resavation_id"
+    t.index ["resavation_id"], name: "index_reviews_on_resavation_id", using: :btree
     t.index ["room_id"], name: "index_reviews_on_room_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
@@ -50,7 +52,7 @@ ActiveRecord::Schema.define(version: 20170409085414) do
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "category",   limit: 1,                 null: false
     t.integer  "max_number", limit: 1,                 null: false
-    t.string   "adress",                               null: false
+    t.string   "address",                              null: false
     t.integer  "user_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false

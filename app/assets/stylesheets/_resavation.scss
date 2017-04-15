@@ -21,3 +21,34 @@
 .text-right{
   text-align: right;
 }
+
+.book_it--date{
+  font-size: 16px;
+}
+
+.price-item__price{
+  width: 220px;
+  text-align: right;
+}
+
+.price-sum_header{
+  display: inline;
+}
+
+.summary-card__total-price{
+  display: inline;
+  margin: 0;
+}
+
+.next-btn{
+  color: white;
+  border-radius: 5px;
+}
+
+.accept-btn{
+  color: white;
+  border-radius: 5px;
+  width: 44px;
+  height: 30px;
+  font-size: 14px;
+}

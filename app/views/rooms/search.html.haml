@@ -1,14 +1,22 @@
 .container-search.border-bottom
   .row
     .col-md-7.container_listing_list
-      .search_nav.border-bottom
+      .search_nav
         %ul.list-unstyled.list-inline
-          %li 部屋タイプ
-          %li 価格帯
-          %li 今すぐ予約
-          %li フィルター
-      .search_results
-        %p 検索結果: #{@rooms.length}件
+          %li
+            %span 部屋タイプ
+            = fa_icon('angle-down gray')
+          %li
+            %span 価格帯
+            = fa_icon('angle-down gray')
+          %li
+            %span 今すぐ予約
+            = fa_icon('angle-down gray')
+          %li
+            %span フィルター
+            = fa_icon('angle-down gray')
+      .search_results.space-2.border-bottom
+        %span 検索結果: #{@rooms.length}件
       .row.listing-cards-row
         = render partial: 'rooms/shared/listing-card', collection: @rooms, as: 'room'
     .col-md-5.container_map

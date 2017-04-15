@@ -39,11 +39,11 @@ class RoomsController < ApplicationController
   end
 
   def search
-    gon.keyword = params[:room][:adress]
     @rooms = []
-    rooms = Room.near([params[:room][:latitude], params[:room][:longitude]], 50)
-    refine_rooms_by_date(rooms)
     gon.latlng = []
+    gon.keyword = params[:form][:address]
+    rooms = Room.near([params[:form][:latitude], params[:form][:longitude]], 50)
+    refine_rooms_by_date(rooms)
     @rooms.each do |room|
       gon.latlng.push(lat: room.latitude, lng: room.longitude)
     end
@@ -51,8 +51,10 @@ class RoomsController < ApplicationController
 
   def show
     @resavation = Resavation.new
-    check_out = modify_to_date(params[:check_out])
-    check_in = modify_to_date(params[:check_in])
+    geocoder = Geocoder.search("#{ @room.latitude }, #{ @room.longitude }")
+    @location = geocoder[0].address_components
+    check_in = modify_to_date(params[:start_day])
+    check_out = modify_to_date(params[:end_day])
     @stay_days = (check_out - check_in).to_i
     @sum_price = @room.price * @stay_days
     @sum = @sum_price + @room.cleaning + @room.service
@@ -65,12 +67,12 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:category, :max_number, :adress, :name, :image, :latitude, :longitude)
+    params.require(:room).permit(:category, :max_number, :address, :name, :image, :latitude, :longitude, :outline, :price, :cleaning, :service)
   end
 
   def refine_rooms_by_date(rooms)
-    start_day = modify_to_date(params[:start])
-    end_day = modify_to_date(params[:end])
+    start_day = modify_to_date(params[:form][:start_day])
+    end_day = modify_to_date(params[:form][:end_day])
     rooms.each do |room|
       flag = 0
       room.resavations.each do |resavation|
@@ -80,9 +82,5 @@ class RoomsController < ApplicationController
       end
       @rooms << room if flag.zero?
     end
-  end
-
-  def modify_to_date(str)
-    Date.parse(str)
   end
 end

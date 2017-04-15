@@ -22,7 +22,6 @@ $(function(){
       processData: false
     })
     .done(function(data){
-      debugger;
       var html = buildHTML(data.message);
       $('.messages-list').append(html);
     })

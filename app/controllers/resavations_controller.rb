@@ -31,6 +31,8 @@ class ResavationsController < ApplicationController
     @resavation = Resavation.find(params[:id])
     @message = Message.new
     @sum_price_of_stay = @resavation.room.price * @resavation.days
+    geocoder = Geocoder.search("#{ @resavation.room.latitude }, #{ @resavation.room.longitude }")
+    @location = geocoder[0].address_components
   end
 
   def submit

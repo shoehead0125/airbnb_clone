@@ -125,3 +125,100 @@
   width: 100vw;
   height: 402px;
 }
+
+.show-navbar{
+  padding-top: 10px;
+  span{
+    font-size: 19px;
+    margin-right: 32px;
+    padding: 12px 0;
+  }
+}
+
+.display-address{
+  a{
+    font-size: 17px;
+    color: $span-gray;
+  }
+}
+
+.user_img{
+  border-radius: 50%;
+}
+
+.icon_container{
+  padding: 10px 0;
+}
+
+.user-profile{
+  display: inline;
+  margin-left: 10px;
+  padding-top: 5px;
+}
+
+.user-review{
+  clear: both;
+  padding-top: 15px;
+  font-size: 17px;
+}
+
+#bookmodal{
+  margin-top: -52px;
+  border: solid 1px $border-gray;
+  .price-box{
+    height: 50px;
+    background-color: $modal-gray;
+    .price--strong{
+      font-size: 28px;
+      color: white;
+      margin: 10px 0 0 15px;
+    }
+    .price{
+      color: white;
+    }
+  }
+}
+
+.new_resavation{
+  padding: 20px 20px;
+}
+
+.input-datarange--start{
+  padding-right: 0px;
+}
+
+.input-datarange--end{
+  padding-left: 0px;
+}
+
+.input-daterange--input{
+  border: solid 1px $border-gray;
+  height: 57px;
+}
+
+.input-daterange--end--input{
+  border: solid 1px $border-gray;
+  height: 57px;
+}
+
+.book_input{
+  font-size: 15px;
+  padding: 12px;
+  text-align: left !important;
+  width: 100%;
+  height: 100%;
+}
+
+.choose_field--text{
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
+.about-listing{
+  padding-bottom: 10px;
+}
+
+.btn-primary:hover{
+  background-color: $primary;
+  border-color: $primary;
+}

@@ -1,5 +1,5 @@
 class TopController < ApplicationController
   def index
-    @room = Room.new
+    @form = Form.new
   end
 end

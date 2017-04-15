@@ -5,6 +5,7 @@
         %h1 レビュー済みです。
       -else
         = form_for ([@room, @review]) do |f|
+          = hidden_field_tag :resavation_id, @resavation.id
           .review-field--labal
             = f.label :body, '宿泊した感想を記入してください。'
           .review-field--input
@@ -15,54 +16,7 @@
             = f.number_field :rate, placeholder: '評価', value: 1, max: 10, min: 1, html: { class: "search__query", style: 'text-align: right;' }
           = f.submit '評価する', class: 'space-top-2'
     .col-md-5
-      .listing-card
-        .background-cover{ style: "background-image: url(#{@resavation.room.image})"}
-        .pull-right.space-3.host-profile-photo
-          = image_tag(@resavation.room.user.image,class: 'host-profile-photo-src')
-        .panel
-          .panel-body
-            .text-muted.space-2
-              %span ホストは #{@resavation.room.user.name}
-            .sidebar-text-large
-              #{@resavation.room.name}
-            .list-layout
-            .text-muted
-              %ul.list-layout
-                %li
-                  #{@resavation.room.category}
-          .panel-body
-            .row
-              .col-sm-5
-                .text-muted.space-2
-                  %p チェックイン
-                  #{@resavation.start_day}
-              .col-sm-2
-                =fa_icon('chevron-right', class: 'icon-light-gray')
-              .col-sm-5
-                .text-muted.space-2
-                  %p チェックアウト
-                  #{@resavation.end_day}
-          .panel-body
-            %table.listing-card__billing-table
-              %tbody
-                %tr.price-item
-                  %th.price-item__header
-                    #{@resavation.room.price} × #{@resavation.days} 泊
-                  %td.text-right.price-item__price
-                    #{@sum_price_of_stay}
-                %tr.price-item
-                  %th.price-item__header
-                    清掃料金
-                  %td.text-right.price-item__price
-                    #{@resavation.room.cleaning}
-                %tr.price-item
-                  %th.price-item__header
-                    サービス料金
-                  %td.text-right.price-item__price
-                    #{@resavation.room.service}
-          .panel-body
-            .sidebar-text-large.space-2.summary-card__total-price
-              = number_to_currency(@resavation.price, locale: 'jp')
+      = render partial: '/resavations/shared/book_it', locals: { resavation: @resavation }
 = javascript_include_tag 'resavation_show.js'
 
 

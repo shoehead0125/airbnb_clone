@@ -1,5 +1,11 @@
-#btn__bulk{
+#search__bulk{
   margin-left: 180px;
+  font-size: 30px;
+  border-radius: 5px;
+  color: white;
+}
+
+#btn__bulk{
   font-size: 30px;
   border-radius: 5px;
   color: white;
@@ -191,4 +197,8 @@ ul#tabs-list li label.panel-label:hover::after {
 
 main p {
   line-height: 1.8;
+}
+
+.tour_header{
+  margin-left: 180px;
 }
