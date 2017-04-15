@@ -51,8 +51,10 @@ class RoomsController < ApplicationController
 
   def show
     @resavation = Resavation.new
-    check_out = modify_to_date(params[:check_out])
-    check_in = modify_to_date(params[:check_in])
+    geocoder = Geocoder.search("#{ @room.latitude }, #{ @room.longitude }")
+    @location = geocoder[0].address_components
+    check_in = modify_to_date(params[:start_day])
+    check_out = modify_to_date(params[:end_day])
     @stay_days = (check_out - check_in).to_i
     @sum_price = @room.price * @stay_days
     @sum = @sum_price + @room.cleaning + @room.service
@@ -65,7 +67,7 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:category, :max_number, :address, :name, :image, :latitude, :longitude)
+    params.require(:room).permit(:category, :max_number, :address, :name, :image, :latitude, :longitude, :outline, :price, :cleaning, :service)
   end
 
   def refine_rooms_by_date(rooms)
