@@ -26,7 +26,7 @@
           .search_field__occupancy--label
             =f.label :occupancy, 'ゲスト'
           .search_field__occupancy--input.space-top-1
-            =f.select :occupancy, options_for_select(Array(1..16))
+            =f.select :occupancy, options_for_select(Array(1..16)), {}, class: 'search-input-occupancy'
             %span 人
         .search_field--especially.col-md-4
           .search_field__submit

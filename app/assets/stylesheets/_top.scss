@@ -16,7 +16,7 @@
 }
 
 .main{
-  height: calc(100% - 382px);
+  height: calc(100vh - 382px);
   h1{
     height: 200px;
     width: 800px;
@@ -24,6 +24,7 @@
     margin: 50px 0 0 200px;
     #airbnb{
       color: $primary;
+      font-size: 45px;
     }
   }
 }
@@ -92,7 +93,7 @@
   }
 }
 
-#room_max_number{
+.search-input-occupancy{
   background-color: white;
   font-size: 20px;
   margin-top: 6px;
