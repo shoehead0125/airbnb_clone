@@ -6,7 +6,7 @@
       = link_to room_path(room.id, start_day: params[:form][:start_day], end_day: params[:form][:end_day]) do
         %span
           = number_to_currency(room.price, locale: 'jp')
-        %strong #{ room.outline }
+        %strong #{ room.name }
     .listing_type
       /TODO: 日本語訳はまた後で実装
       %span #{ room.category }

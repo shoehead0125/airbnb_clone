@@ -3,12 +3,12 @@
     .field-label
       = f.label :type
     .field-input
-      = f.select :category, Room.categories.keys.to_a, {}, class: 'form-control', autofocus: true
+      = f.select :category, options_for_select(Room.categories.keys.to_a, room.category), {}, class: 'form-control', autofocus: true
   .form-group
     .field-label
       = f.label :max_number, 'Occupancy'
     .field-input
-      = f.select :max_number, options_for_select(Array(1..16)), {}, class: 'form-control', autofocus: true
+      = f.select :max_number, options_for_select(Array(1..16), room.max_number), {}, class: 'form-control', autofocus: true
   .form-group
     .field-label
       = f.label :address
