@@ -3,7 +3,7 @@
 %main#site-content
   #summary.panel.room-section.no-border
     .page-container-responsive
-      .row
+      .row.border-bottom
         .col-lg-8
           .row.hide-md.border-bottom
             %ul.list-inline.show-navbar
@@ -21,7 +21,7 @@
                 .hide-sm.col-md-10
                   %h1 #{ @room.name }
                   .display-address.space-1
-                    = link_to "#{ @location[6]['long_name'] }, #{ @location[5]['long_name'] }"
+                    = link_to "#{ @location[6]['long_name'] }, #{ @location[5]['long_name'] }", '#', id: 'scroll-area'
                   .rating--room.space-1
                     %span{ class: "rating-star rate-#{ @room.reviews_average }0"}
                 .hide-sm.text-center.col-md-2.text-muted.space-top-3
@@ -59,6 +59,10 @@
         .col-lg-4
           .book-it
             = render partial: '/rooms/shared/book'
-
-= javascript_include_tag 'show.js'
+      .row
+        .col-sm-12#scroll-target
+          %h2 エリア
+          #map-canvas-show
+= javascript_include_tag 'date_picker.js'
+= javascript_include_tag 'show_map.js'
 
