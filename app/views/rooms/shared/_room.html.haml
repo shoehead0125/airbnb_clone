@@ -13,9 +13,9 @@
             .col-lg-10
               .listing-progress
                 .progress.progress-bar__lean{"aria-valuemax" => "7", "aria-valuemin" => "0", "aria-valuenow" => "5", :role => "progressbar"}
-                  .progress-bar.progress-bar-success.progress-bar__babu{:style => "width: 71%;"}
+                  .progress-bar.progress-bar-success.progress-bar__babu{:style => "width: #{ @rate[room_counter] }%;"}
                 .text-babu.space-top-1
-                  %span リスティングは作成は100%
+                  %span リスティングは作成は#{ @rate[room_counter] }%
                 .space-top-2
                   %span.h4 #{ room.name }
                 .text-muted.text-grey.space-top-1.last-modified-date

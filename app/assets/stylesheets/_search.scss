@@ -20,3 +20,8 @@
 .fa-gray:before{
   color: $span-gray;
 }
+
+.container_listing_list{
+  height: 100vh;
+  overflow: auto;
+}

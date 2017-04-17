@@ -2,6 +2,15 @@ class RoomsController < ApplicationController
   before_action :set_room_edit, only: [:edit, :update, :destroy, :show]
   def index
     @rooms = current_user.rooms
+    @rate = []
+    columns = Room.column_names
+    @rooms.each do |room|
+      count = 0
+      columns.each do |prop|
+        count += 1 if room[prop]
+      end
+      @rate.push((count.to_f/columns.length*100).round)
+    end
   end
 
   def new
@@ -19,7 +28,9 @@ class RoomsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @room = Room.find(params[:id])
+  end
 
   def update
     redirect_to edit_room_path(@room.id) unless current_user.id == @room.user_id
