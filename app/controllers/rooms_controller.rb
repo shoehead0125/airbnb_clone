@@ -62,6 +62,7 @@ class RoomsController < ApplicationController
 
   def show
     @resavation = Resavation.new
+    gon.latlng = { lat: @room.latitude, lng: @room.longitude }
     geocoder = Geocoder.search("#{ @room.latitude }, #{ @room.longitude }")
     @location = geocoder[0].address_components
     check_in = modify_to_date(params[:start_day])
