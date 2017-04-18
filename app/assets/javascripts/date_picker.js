@@ -3,6 +3,7 @@ $(function(){
     $('.input-group-addon').css('visibility','visible')
   });
   $('.input-daterange').datepicker({
-    language: "ja"
+    language: "ja",
+    startDate: new Date()
   });
 });
