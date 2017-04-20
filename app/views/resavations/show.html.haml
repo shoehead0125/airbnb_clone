@@ -7,7 +7,7 @@
             %h4.panel-title
               %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse1", class: 'resavation-first-panel'}
                 1. 旅行について
-          #collapse1.panel-collapse.collapse.in
+          #collapse1.panel-collapse.collapse{ class: "#{(current_user == @resavation.user)? 'in': ''}" }
             .panel-body
               = form_for ([@resavation, @message]), html: { class: 'js-form' } do |f|
                 .input-field-label
@@ -20,7 +20,7 @@
             %h4.panel-title
               %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse2", class: 'resavation-second-panel'}
                 2. メッセージ
-          #collapse2.panel-collapse.collapse
+          #collapse2.panel-collapse.collapse{ class: "#{(current_user == @resavation.room.user)? 'in': ''}" }
             .panel-header.space-top-2
               -if current_user == @resavation.user
                 ホストの承認を待ちましょう！
