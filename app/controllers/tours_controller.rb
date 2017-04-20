@@ -14,7 +14,7 @@ class ToursController < ApplicationController
       @ends.push(params[:end_day])
       @occupancys.push(params[:occupancy])
       @keyword.push(params[:address])
-      rooms = Room.near([params[:latitude], params[:longitude]], 50)
+      rooms = Room.near([params[:latitude], params[:longitude]], 2)
       refine_rooms_by_date(i, rooms, params)
     end
     @rooms.each_with_index do |rooms, i|
