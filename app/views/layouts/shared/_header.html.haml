@@ -9,8 +9,8 @@
           %img{:alt => "", :height => "28", :src => "https://a0.muscache.com/defaults/user_pic-50x50.png?v=2", :width => "28"}
       = render partial: 'top/shared/usermenu'
     = link_to 'ヘルプ', '', class: 'help pull-right'
-    = link_to 'メッセージ', '', class: 'message pull-right'
-    = link_to '旅行', resavations_path, class: 'travel pull-right'
+    = link_to 'メッセージ', resavations_path, class: 'message pull-right'
+    = link_to '旅行', request_to_confirm_resavations_path, class: 'travel pull-right'
     = link_to 'ツアー', new_tour_path, class: 'tour pull-right'
     - if current_user.rooms
       = link_to 'ホスト', rooms_path, class: 'host pull-right'
