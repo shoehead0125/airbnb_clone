@@ -1,0 +1,5 @@
+%main.site-content
+  = render partial: 'rooms/shared/subnav'
+  .row.page-container-responsive.space-top-4
+    - @resavations.each  do |resavations|
+      = render partial: 'resavations/shared/listing-card', collection: resavations, as: 'resavation'

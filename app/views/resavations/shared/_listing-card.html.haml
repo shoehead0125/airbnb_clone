@@ -1,0 +1,15 @@
+.col-sm-12.col-md-6.space-4
+  .listingCardWrapper{ id: resavation.room.id }
+    .container-image
+      = image_tag(resavation.room.image, class: 'listing-image')
+    .linktolisting
+      = link_to resavation_path(resavation.id) do
+        %span
+          = number_to_currency(resavation.price, locale: 'jp')
+        %strong #{ resavation.room.name }
+    .listing_type
+      /TODO: 日本語訳はまた後で実装
+      %span #{ resavation.room.category }
+    .rating--room
+      %span{ class: "rating-star rate-#{ resavation.room.reviews_average }0"}
+      %span レビュー件数は#{ resavation.room.reviews.length }件
