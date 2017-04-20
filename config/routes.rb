@@ -41,6 +41,10 @@ Rails.application.routes.draw do
     end
   end
   resources :resavations, only: [:create, :show, :index] do
+    collection do
+      get 'host'
+      get 'request_to_confirm'
+    end
     resources :messages, only: [:create]
     member do
       get 'submit'
