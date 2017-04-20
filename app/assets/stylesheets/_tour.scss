@@ -9,6 +9,9 @@
   font-size: 30px;
   border-radius: 5px;
   color: white;
+  position: absolute;
+  top: 38px;
+  right: 30px;
 }
 
 label.panel-label {
@@ -145,6 +148,7 @@ ul#tabs-list {
   padding: 0;
   text-align: center;
   border-bottom: 1px solid #dfdfdf;
+  position: relative;
 }
 ul#tabs-list li {
   display: flex;
@@ -201,4 +205,9 @@ main p {
 
 .tour_header{
   margin-left: 180px;
+}
+
+.listing-cards-row{
+  display: flex;
+  flex-wrap: wrap;
 }

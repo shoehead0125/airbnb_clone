@@ -12,11 +12,16 @@ $(function(){
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),mapOpt);
+
         $(gon.latlng).each(function(i){
           var latlng = new google.maps.LatLng( gon.latlng[i].lat, gon.latlng[i].lng, false );
-          var marker_i = new google.maps.Marker({
-          map: map,
-          position: latlng
+          var info_window = new google.maps.InfoWindow({
+            position: latlng,
+            maxWidth: 50,
+            content: '<div class="infoWindow_span_' + gon.room_id[i] + '">' + gon.price[i] + '円</div>'
+          });
+          $(window).on('load', function(){
+            info_window.open(map);
           });
         });
       }else {
@@ -24,4 +29,16 @@ $(function(){
       }
     });
   }
+  $('.listingCardWrapper').hover(
+    function(){
+      roomId = $(this).attr('id');
+      target = '.infoWindow_span_' + roomId;
+      $(target).css('background-color', 'red');
+    },
+    function(){
+      roomId = $(this).attr('id');
+      target = '.infoWindow_span_' + roomId;
+      $(target).css('background-color', 'white');
+    }
+  );
 });

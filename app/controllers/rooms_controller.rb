@@ -52,11 +52,15 @@ class RoomsController < ApplicationController
   def search
     @rooms = []
     gon.latlng = []
+    gon.price = []
+    gon.room_id = []
     gon.keyword = params[:form][:address]
-    rooms = Room.near([params[:form][:latitude], params[:form][:longitude]], 50)
+    rooms = Room.near([params[:form][:latitude], params[:form][:longitude]], 2)
     refine_rooms_by_date(rooms)
     @rooms.each do |room|
       gon.latlng.push(lat: room.latitude, lng: room.longitude)
+      gon.price << room.price
+      gon.room_id << room.id
     end
   end
 
