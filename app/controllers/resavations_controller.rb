@@ -45,6 +45,18 @@ class ResavationsController < ApplicationController
     end
   end
 
+  def host
+    @rooms = current_user.rooms
+    @resavations = []
+    @rooms.each do |room|
+      @resavations << room.resavations
+    end
+  end
+
+  def request_to_confirm
+    @resavations = current_user.resavations
+  end
+
   private
 
     def resavation_params
