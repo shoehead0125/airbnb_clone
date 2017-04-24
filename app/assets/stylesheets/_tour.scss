@@ -203,7 +203,7 @@ main p {
   line-height: 1.8;
 }
 
-.tour_header{
+.tour_header,.tour_name_field{
   margin-left: 180px;
 }
 
@@ -211,3 +211,11 @@ main p {
   display: flex;
   flex-wrap: wrap;
 }
+
+.tour_name_input{
+  width: 1119px;
+  height: 50px;
+  font-size: 30px;
+  border-radius: 5px;
+}
+
