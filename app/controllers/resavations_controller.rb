@@ -24,7 +24,7 @@ class ResavationsController < ApplicationController
       @resavation = Resavation.new(resavation_bulk_params(i, sum))
       @resavation.save
     end
-    redirect_to resavations_path
+    redirect_to request_to_confirm_resavations_path
   end
 
   def show
@@ -64,7 +64,7 @@ class ResavationsController < ApplicationController
     end
 
     def resavation_bulk_params(i, sum)
-      params.require(:resavation).require(i.to_s).permit(:room_id, :start_day, :end_day, :occupancy).merge(user_id: current_user.id, price: sum)
+      params.require(:resavation).require(i.to_s).permit(:room_id, :start_day, :end_day, :occupancy).merge(user_id: current_user.id, price: sum, tour_id: params[:tour][:id])
     end
 
     def modify_to_date(str)
