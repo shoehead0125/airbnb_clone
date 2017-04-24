@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :resavations
   has_many :messages
   has_many :reviews
-  has_many :tour
+  has_many :tours
 
   def name
     self.first_name + ' ' + self.last_name
