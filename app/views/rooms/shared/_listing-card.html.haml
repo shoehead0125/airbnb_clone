@@ -13,7 +13,7 @@
     .rating--room
       %span{ class: "rating-star rate-#{ room.reviews_average }0"}
       %span レビュー件数は#{ room.reviews.length }件
-      -if request.path_info == "/tours"
+      -if request.path_info == "/tours/search"
         .choose_room
           %span 選択する
           = check_box_tag "resavation[#{i}][room_id]", room.id

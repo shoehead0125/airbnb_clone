@@ -1,0 +1,25 @@
+.panel.space-4
+  .panel-header.active-panel-header
+    .active-panel-padding #{ tour.name }
+  .panel-body.row
+    - tour.resavations.each_with_index do |resavation ,i|
+      .col-md-4.space-4
+        .listingCardWrapper
+          .agenda
+            %span 第#{ i + 1 }日程
+            %br
+            %span #{ resavation.start_day } > #{ resavation.end_day }
+        .container-image
+          = image_tag(resavation.room.image, class: 'listing-image')
+        .linktolisting
+          = link_to resavation_path(resavation.id) do
+            %span
+              = number_to_currency(resavation.price, locale: 'jp')
+            %strong #{ resavation.room.name }
+        .listing_type
+          /TODO: 日本語訳はまた後で実装
+          %span #{ resavation.room.category }
+        .rating--room
+          %span{ class: "rating-star rate-#{ resavation.room.reviews_average }0"}
+          %span レビュー件数は#{ resavation.room.reviews.length }件
+
