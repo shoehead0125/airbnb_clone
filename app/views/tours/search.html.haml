@@ -22,6 +22,7 @@
       %article#panels
         .container
           = form_tag('/resavations/bulk_create') do
+            %input.tour_id{ type: 'hidden', name: 'tour[id]', value: @tour.id }
             .border-bottom
               %section#panel-1
                 %main
