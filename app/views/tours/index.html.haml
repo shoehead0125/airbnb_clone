@@ -1,0 +1,4 @@
+%main.site-content
+  = render partial: 'rooms/shared/subnav'
+  .page-container-responsive.space-top-4.space-4
+    = render partial: 'tours/shared/tour-card', collection: @tours, as: 'tour'
