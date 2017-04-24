@@ -1,7 +1,11 @@
 .container_tour_search.border-bottom
-  .tour_header
+  .tour_header.space-5
     %h4 旅の予定を入力してください(渋谷⇒京都⇒金閣時など)
-  = form_tag '/tours', method: :get do
+  = form_tag '/tours/search', method: :get do
+    .tour_name_field
+      = label_tag 'tour[name]', 'ツアー名'
+      %br
+      = text_field_tag 'tour[name]','',class: 'tour_name_input'
     = render partial: '/tours/shared/search', locals:{ i: 0 }
     = render partial: '/tours/shared/search', locals:{ i: 1 }
     = render partial: '/tours/shared/search', locals:{ i: 2 }

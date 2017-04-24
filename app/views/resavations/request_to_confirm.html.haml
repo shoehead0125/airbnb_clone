@@ -1,3 +1,4 @@
-.resavation_index
+.resavation_index.site-content
+  = render partial: 'rooms/shared/subnav'
   .row.page-container-responsive.space-top-4
     = render partial: 'resavations/shared/listing-card', collection: @resavations, as: 'resavation'

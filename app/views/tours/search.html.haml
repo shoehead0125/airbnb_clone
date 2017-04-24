@@ -1,0 +1,57 @@
+.container-search.border-bottom
+  .row
+    .col-md-7.container_listing_list
+      .search_nav.border-bottom
+        %ul.list-unstyled.list-inline
+          %li 部屋タイプ
+          %li 価格帯
+          %li 今すぐ予約
+          %li フィルター
+      .search_results
+        -# %p 検索結果: #{@rooms.length}件
+      %input#panel-1-ctrl.panel-radios{:checked => "checked", :name => "tab-radios", :type => "radio"}
+      %input#panel-2-ctrl.panel-radios{:name => "tab-radios", :type => "radio"}
+      %input#panel-3-ctrl.panel-radios{:name => "tab-radios", :type => "radio"}
+      %ul#tabs-list
+        %li#li-for-panel-1
+          %label.panel-label{:for => "panel-1-ctrl", id:0} #{@keyword[0]}
+        %li#li-for-panel-2
+          %label.panel-label{:for => "panel-2-ctrl", id: 1} #{@keyword[1]}
+        %li#li-for-panel-3
+          %label.panel-label{:for => "panel-3-ctrl", id: 2} #{@keyword[2]}
+      %article#panels
+        .container
+          = form_tag('/resavations/bulk_create') do
+            %input.tour_id{ type: 'hidden', name: 'tour[id]', value: @tour.id }
+            .border-bottom
+              %section#panel-1
+                %main
+                  .row.listing-cards-row
+                    = render partial: 'rooms/shared/listing-card', collection: @rooms[0], as: 'room', locals: {i: 0}
+                    %input.date-start-1{type: 'hidden', name: "resavation[0][start_day]", value: @starts[0]}
+                    %input.date-end-1{type: 'hidden', name: "resavation[0][end_day]", value: @ends[0]}
+                    %input.date-occupancy-1{type: 'hidden', name: "resavation[0][occupancy]", value: @occupancys[0]}
+              %section#panel-2
+                %main
+                  -if @rooms[1]
+                    .row.listing-cards-row
+                      = render partial: 'rooms/shared/listing-card', collection: @rooms[1], as: 'room', locals: {i: 1}
+                      %input.date-start-2{type: 'hidden', name: "resavation[1][start_day]", value: @starts[1]}
+                      %input.date-end-2{type: 'hidden', name: "resavation[1][end_day]", value: @ends[1]}
+                      %input.date-occupancy-2{type: 'hidden', name: "resavation[1][occupancy]", value: @occupancys[1]}
+                  -else
+                    宿泊施設はありません。
+              %section#panel-3
+                %main
+                  -if @rooms[2]
+                    .row.listing-cards-row
+                      = render partial: 'rooms/shared/listing-card', collection: @rooms[2], as: 'room', locals: {i: 2}
+                      %input.date-start-1{type: 'hidden', name: "resavation[2][start_day]", value: @starts[2]}
+                      %input.date-end-1{type: 'hidden', name: "resavation[2][end_day]", value: @ends[2]}
+                      %input.date-occupancy-1{type: 'hidden', name: "resavation[2][occupancy]", value: @occupancys[2]}
+                  -else
+                    宿泊施設はありません。
+            = submit_tag '一括予約', class: 'btn__first-btn space-top-3 space-3', id: 'btn__bulk'
+    .col-md-5.container_map
+      #map-canvas
+=javascript_include_tag 'tour_search.js'
